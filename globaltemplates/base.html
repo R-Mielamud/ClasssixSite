@@ -1,0 +1,60 @@
+{% load static %}
+
+<html lang="ua-ua">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{% static 'site.css' %}">
+        <link rel="stylesheet" href="{% static 'top-menu.css' %}">
+        <link rel="stylesheet" href="{% static 'registration-form.css' %}">
+        <link rel="stylesheet" href="{% static 'diary.css' %}">
+        {% block additional_sheets %}{% endblock %}
+        <title>6 Клас</title>
+    </head>
+    
+    <body>
+        <header>
+            <div class="top-menu">
+                <span class="top-menu-element top-menu-header">Наш 6 клас</span>
+                <button id="toMainButton" class="top-menu-button top-menu-element top-menu-to-main-button">Головна</button>
+                <button id="toDiaryButton" class="top-menu-button top-menu-element">Щоденник</button>
+                <button id="editRatingsButton" class="top-menu-button top-menu-element">Редагувати оцінки</button>
+                <button id="registrationButton" class="top-menu-button top-menu-element top-menu-registration-button">Вхід</button>
+                <button id="unregistrationButton" class="top-menu-button top-menu-element top-menu-unregistration-button">Вихід</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="modal-window-bg" id="registrationFormBg">
+                <form method="post" class="registration-form">{% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Увійти" class="registration-form-button-input">
+                    <input type="reset" id="registrationFormReset" value="Скасувати" class="registration-form-button-input">
+                </form>
+            </div>
+
+            {% block main_content %}{% endblock %}
+        </main>
+
+        <footer>
+            <script>
+                let toDiaryButton = document.getElementById("toDiaryButton");
+                let editRatingsButton = document.getElementById("editRatingsButton");
+                let showedButton = false;
+                
+                if ("{{ canShowToDiaryButton }}" === "y") {
+                    toDiaryButton.style.display = "block";
+                    showedButton = true;
+                } else if ("{{ canShowEditRatingsButton }}" === "y") {
+                    editRatingsButton.style.display = "block";
+                    showedButton = true;
+                }
+            </script>
+
+            <script src="{% static 'buttons.js' %}"></script>
+            <script src="{% static 'registration_form.js' %}"></script>
+            {% block additional_scripts %}{% endblock %}
+        </footer>
+    </body>
+</html>

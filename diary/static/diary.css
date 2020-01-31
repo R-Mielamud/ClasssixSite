@@ -1,0 +1,74 @@
+.diary-table {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.semester-ratings-table {
+    width: 100%;
+    display: flex !important;
+    margin-bottom: 40px;
+}
+
+.subjects-sidebar {
+    width: 10%;
+    transform: translateY(116px);
+}
+
+.subject-gap {
+    width: 99%;
+    height: 30px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.ratings-table {
+    display: flex;
+    height: 100%;
+    width: 90%;
+    overflow-x: scroll;
+}
+
+.ratings-table-month {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ratings-table-month-marker {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: #AF7;
+    letter-spacing: 20px;
+}
+
+.ratings-table-body {
+    display: flex;
+    height: 100%;
+}
+
+.ratings-column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.rating-gap, .rating-number-gap {
+    height: 30px;
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.rating-gap {
+    border: 1px solid black;
+    width: 50px;
+}
+
+.rating-number-gap {
+    width: 52px;
+}
+
+.month-headers {
+    display: flex;
+}

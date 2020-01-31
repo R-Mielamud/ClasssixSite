@@ -1,0 +1,14 @@
+* {
+    font-family: cursive;
+    margin: 0;
+}
+
+.modal-window-bg {
+    background-color: #00000050;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
