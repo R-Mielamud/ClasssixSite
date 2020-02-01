@@ -21,7 +21,7 @@
         <div class="semester-ratings-table">
             <div class="subjects-sidebar">
                 {% for sub in subjects %}
-                    <div class="subject-gap">{{ sub.name }}</div>
+                    <div class="subject-gap"><span>{{ sub.name }}</span></div>
                 {% endfor %}
             </div>
 
@@ -51,7 +51,7 @@
         <div class="semester-ratings-table">
             <div class="subjects-sidebar">
                 {% for sub in subjects %}
-                    <div class="subject-gap">{{ sub.name }}</div>
+                    <div class="subject-gap"><span>{{ sub.name }}</span></div>
                 {% endfor %}
             </div>
 
@@ -77,10 +77,58 @@
         </div>
     </div>
 
+    {% for rating in ratings %}
+        <script async>
+            let date = "{{ rating.month }}-{{ rating.day }}";
+            let subject = "{{ rating.subject.index }}";
+
+            if ("{{ rating.rating1 }}" !== "None") {
+                let value = "{{ rating.rating1.value }}";
+                let color = "{{ rating.rating1.color }}";
+                let gapId = "gap-" + date + "-" + subject;
+                console.log(gapId);
+                let gap = document.getElementById(gapId);
+                let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
+                gap.innerHTML += `<span style='color: ${color};'>${value}${canPutSlash ? "/" : ""}</span>`;
+            }
+            
+            if ("{{ rating.rating2 }}" !== "None") {
+                let value = "{{ rating.rating2.value }}";
+                let color = "{{ rating.rating2.color }}";
+                let gapId = "gap-" + date + "-" + subject;
+                let gap = document.getElementById(gapId);
+                let canPutSlash = "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
+                gap.innerHTML += `<span style='color: ${color};'>${value}${canPutSlash ? "/" : ""}</span>`;
+            }
+            
+            if ("{{ rating.rating3 }}" !== "None") {
+                let value = "{{ rating.rating3.value }}";
+                let color = "{{ rating.rating3.color }}";
+                let gapId = "gap-" + date + "-" + (+subject + 1);
+                let gap = document.getElementById(gapId);
+                let canPutSlash = "{{ rating.rating4 }}" !== "None";
+                gap.innerHTML += `<span style='color: ${color};'>${value}${canPutSlash ? "/" : ""}</span>`;
+            } 
+            
+            if ("{{ rating.rating4 }}" !== "None") {
+                let value = "{{ rating.rating4.value }}";
+                let color = "{{ rating.rating4.color }}";
+                let gapId = "gap-" + date + "-" + (+subject + 1);
+                let gap = document.getElementById(gapId);
+                gap.innerHTML += `<span style='color: ${color};'>${value}</span>`;
+            }
+        </script>
+    {% endfor %}
+
     <script>
         if ("{{ canRedirect }}" === "y") window.location.href = "/";
 
+
+        // ---
         const FIRST_WEEKEND_START_DAY = 5;
+        // ---
+
+
         let is366 = (new Date()).getFullYear() % 4 === 0;
         const MONTHS_LENGTHS = [30, 31, 30, 31, 31, 28 + is366, 31, 30, 31];
         let isPlus6 = false;

@@ -19,6 +19,11 @@
     height: 30px;
     border: 1px solid black;
     text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ratings-table {
@@ -58,6 +63,9 @@
     font-size: 10px;
     text-align: center;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .rating-gap {

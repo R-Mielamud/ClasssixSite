@@ -3,10 +3,14 @@ from . import constants
 
 class Subject(Model):
     name = CharField(default="", max_length=100)
+    index = IntegerField(default=1)
+
+    def __str__(self):
+        return "{}".format(self.name)
 
 class Rating(Model):
     value = PositiveIntegerField(default=12)
-    color = CharField(default="", max_length=100)
+    color = CharField(null=True, blank=True, max_length=100)
     status = CharField(choices=constants.RATING_TYPES, default="Звичайна", max_length=100)
 
     def _set_color(self):
@@ -20,11 +24,11 @@ class Rating(Model):
         return super().save(*args, **kwargs)
 
 class RatingSet(Model):
-    rating1 = ForeignKey(Rating, related_name="sets1", on_delete=CASCADE)
-    rating2 = ForeignKey(Rating, related_name="sets2", on_delete=CASCADE)
-    rating3 = ForeignKey(Rating, related_name="sets3", on_delete=CASCADE)
-    rating4 = ForeignKey(Rating, related_name="sets4", on_delete=CASCADE)
-    subject = CharField(default="Укр. мова", choices=constants.SUBJECTS, max_length=100)
+    rating1 = ForeignKey(Rating, related_name="sets1", on_delete=CASCADE, blank=True, null=True)
+    rating2 = ForeignKey(Rating, related_name="sets2", on_delete=CASCADE, blank=True, null=True)
+    rating3 = ForeignKey(Rating, related_name="sets3", on_delete=CASCADE, blank=True, null=True)
+    rating4 = ForeignKey(Rating, related_name="sets4", on_delete=CASCADE, blank=True, null=True)
+    subject = ForeignKey(Subject, related_name="sets", on_delete=CASCADE)
     day = IntegerField(default=1)
     month = IntegerField(default=1)
 
