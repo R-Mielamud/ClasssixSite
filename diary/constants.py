@@ -19,7 +19,7 @@ STATUS_TYPE_TO_COLOR = {
     "Семестрова": "red",
     "Річна": "brown",
     "Залік": "#F0F",
-    "Екзамен": "#A0A"
+    "Екзамен": "#B08"
 }
 
 SECOND_MONTH_IN_YEAR_NANE = "ЛЮТИЙ"
