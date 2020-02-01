@@ -22,9 +22,4 @@ STATUS_TYPE_TO_COLOR = {
     "Екзамен": "#A0A"
 }
 
-SUBJECTS = (
-    ("1", "Укр. мова"),
-    ("2", "Математика")
-)
-
 SECOND_MONTH_IN_YEAR_NANE = "ЛЮТИЙ"
