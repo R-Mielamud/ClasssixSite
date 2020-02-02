@@ -79,8 +79,8 @@
 
     {% for rating in ratings %}
         <script async>
-            let date = "{{ rating.month }}-{{ rating.day }}";
-            let subject = "{{ rating.subject.index }}";
+            var date = "{{ rating.month }}-{{ rating.day }}";
+            var subject = "{{ rating.subject.index }}";
 
             if ("{{ rating.rating1 }}" !== "None") {
                 let value = "{{ rating.rating1.value }}";

@@ -1,0 +1,34 @@
+.editratings-form-main-block {
+    margin: 30px 0 0 100px;
+    width: 800px;
+}
+
+.editratings-form-student-block {
+    display: flex;
+    border: 5px solid orange;
+    margin-bottom: 50px;
+}
+
+.editratings-form-student-name-gap {
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: 14px;
+    height: 46.5px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editratings-form-containers-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.editratings-form-ratings-container, .editratings-form-statuses-container {
+    display: flex;
+}
+
+.editratings-form-status-input, .editratings-form-rating-input {
+    width: 150px;
+}

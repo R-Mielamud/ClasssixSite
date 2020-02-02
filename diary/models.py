@@ -9,9 +9,9 @@ class Subject(Model):
         return "{}".format(self.name)
 
 class Rating(Model):
-    value = PositiveIntegerField(default=12)
+    value = PositiveIntegerField(null=True, blank=True)
     color = CharField(null=True, blank=True, max_length=100)
-    status = CharField(choices=constants.RATING_TYPES, default="Звичайна", max_length=100)
+    status = CharField(choices=constants.RATING_TYPES, null=True, blank=True, max_length=100)
 
     def _set_color(self):
         self.color = constants.STATUS_TYPE_TO_COLOR[self.status]

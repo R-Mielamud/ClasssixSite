@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% load times %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'editratings-form.css' %}">
+{% endblock %}
+
+{% block main_content %}
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="editratings-form-main-block">
+            {% for student in students %}
+                <div class="editratings-form-student-block">
+                    <div class="editratings-form-student-name-gap"><span>{{ student.real_full_name }}</span></div>
+
+                    <div class="editratings-form-containers-block">
+                        <div class="editratings-form-ratings-container">
+                            {% for i in 4|times %}
+                                <input
+                                    type="number"
+                                    class="editratings-form-rating-input"
+                                    name="rating-input-{{ i }}-for-{{ student.username }}">
+                            {% endfor %}
+                        </div>
+
+                        <div class="editratings-form-statuses-container">
+                            {% for i in 4|times %}
+                                <select size="1" class="editratings-form-status-input" name="status-input-{{ i }}-for-{{ student.username }}">
+                                    {% for rating_type in possible_statuses %}
+                                        <option>{{ rating_type }}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <input type="submit" value="subm" name="submit">
+    </form>
+{% endblock %}
