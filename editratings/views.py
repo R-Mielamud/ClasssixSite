@@ -13,6 +13,18 @@ class EditRatingsView(RegistrationFormView):
         context["students"] = User.objects.filter(is_teacher=False)
         context["subjects"] = Subject.objects.all()
         context["possible_statuses"] = [status[0] for status in constants.RATING_TYPES]
+        registered = self.request.session.get("registered")
+
+        if registered:
+            user = User.objects.get(username=registered)
+
+            if not user.is_teacher:
+                context["canRedirect"] = "y"
+            else:
+                context["canRedirect"] = "n"
+        else:
+            context["canRedirect"] = "y"
+
         return context
 
     def post(self, request, *args, **kwargs):

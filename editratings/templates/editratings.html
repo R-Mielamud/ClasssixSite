@@ -4,6 +4,16 @@
 
 {% block additional_sheets %}
     <link rel="stylesheet" href="{% static 'editratings-form.css' %}">
+
+    <style>
+        #editRatingsButton {
+            background-color: #00A;
+        }
+
+        #toMainButton {
+            background-color: blue;
+        }
+    </style>
 {% endblock %}
 
 {% block main_content %}
@@ -50,4 +60,10 @@
             <input type="submit" value="Застосувати" name="submit" class="editratings-form-submit-button">
         </div>
     </form>
+{% endblock %}
+
+{% block additional_scripts %}
+    <script>
+        if ("{{ canRedirect }}" === "y") window.location.href = "/";
+    </script>
 {% endblock %}
