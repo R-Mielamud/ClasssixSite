@@ -11,6 +11,12 @@
         {% csrf_token %}
 
         <div class="editratings-form-main-block">
+            <select size="1" required name="subject-input" class="editratings-form-subject-input">
+                {% for sub in subjects %}
+                    <option>{{ sub.name }}</option>
+                {% endfor %}
+            </select>
+
             {% for student in students %}
                 <div class="editratings-form-student-block">
                     <div class="editratings-form-student-name-gap"><span>{{ student.real_full_name }}</span></div>
@@ -23,6 +29,8 @@
                                     class="editratings-form-rating-input"
                                     name="rating-input-{{ i }}-for-{{ student.username }}">
                             {% endfor %}
+
+                            <input type="date" required name="date-input-for-{{ student.username }}" class="editratings-form-date-input">
                         </div>
 
                         <div class="editratings-form-statuses-container">

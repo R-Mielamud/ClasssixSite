@@ -11,6 +11,7 @@ class EditRatingsView(RegistrationFormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["students"] = User.objects.filter(is_teacher=False)
+        context["subjects"] = Subject.objects.all()
         context["possible_statuses"] = [status[0] for status in constants.RATING_TYPES]
         return context
 
@@ -18,6 +19,7 @@ class EditRatingsView(RegistrationFormView):
         if request.POST.get("submit"):
             students = User.objects.filter(is_teacher=False)
             post = request.POST
+            subject = post.get("subject-input")
 
             for student in students:
                 ratings = []
@@ -34,6 +36,12 @@ class EditRatingsView(RegistrationFormView):
                             status=status
                         ))
 
+                date = post.get("date-input-for-" + student.username)
+                date_splited = date.split("-")
+                year, month, day = date_splited
+                del year
+                month_formatted = int(month) - 8 if int(month) > 8 else int(month) + 4
+
                 for r in ratings:
                     r.save()
 
@@ -48,9 +56,9 @@ class EditRatingsView(RegistrationFormView):
                         rating2=rating2,
                         rating3=rating3,
                         rating4=rating4,
-                        subject=Subject.objects.get(name="Укр. мова"),
-                        month=1,
-                        day=1
+                        subject=Subject.objects.get(name=subject),
+                        month=month_formatted,
+                        day=day
                     )
 
                     rating_set.save()
