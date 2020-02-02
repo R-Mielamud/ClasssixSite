@@ -23,6 +23,9 @@ class Rating(Model):
         self._set_color()
         return super().save(*args, **kwargs)
 
+    def __str__(self):
+        return "{} {} {}".format(self.value, self.color, self.status)
+
 class RatingSet(Model):
     rating1 = ForeignKey(Rating, related_name="sets1", on_delete=CASCADE, blank=True, null=True)
     rating2 = ForeignKey(Rating, related_name="sets2", on_delete=CASCADE, blank=True, null=True)
@@ -32,9 +35,15 @@ class RatingSet(Model):
     day = IntegerField(default=1)
     month = IntegerField(default=1)
 
+    def __str__(self):
+        return "{} {}.{}".format(self.subject.name, self.day, self.month)
+
 class Month(Model):
     days = IntegerField(default=30)
     name = CharField(default="", max_length=30)
     semester = IntegerField(default=1)
     number_in_semester = IntegerField(default=1)
     number_in_year = IntegerField(default=1)
+
+    def __str__(self):
+        return "{}".format(self.name)

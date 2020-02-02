@@ -27,7 +27,8 @@
 
                         <div class="editratings-form-statuses-container">
                             {% for i in 4|times %}
-                                <select size="1" class="editratings-form-status-input" name="status-input-{{ i }}-for-{{ student.username }}">
+                                <select size="1" class="editratings-form-status-input"
+                                    name="status-input-{{ i }}-for-{{ student.username }}">
                                     {% for rating_type in possible_statuses %}
                                         <option>{{ rating_type }}</option>
                                     {% endfor %}
@@ -37,8 +38,8 @@
                     </div>
                 </div>
             {% endfor %}
-        </div>
 
-        <input type="submit" value="subm" name="submit">
+            <input type="submit" value="Застосувати" name="submit" class="editratings-form-submit-button">
+        </div>
     </form>
 {% endblock %}
