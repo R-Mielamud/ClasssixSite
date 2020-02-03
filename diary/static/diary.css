@@ -81,3 +81,11 @@
 .month-headers {
     display: flex;
 }
+
+.semester-marker {
+    font-size: 48px;
+    color: orange;
+    letter-spacing: 25px;
+    text-align: center;
+    margin: 20px 0;
+}

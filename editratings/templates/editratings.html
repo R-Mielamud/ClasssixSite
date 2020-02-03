@@ -45,8 +45,7 @@
 
                         <div class="editratings-form-statuses-container">
                             {% for i in 4|times %}
-                                <select size="1" class="editratings-form-status-input"
-                                    name="status-input-{{ i }}-for-{{ student.username }}">
+                                <select size="1" class="editratings-form-status-input" name="status-input-{{ i }}-for-{{ student.username }}">
                                     {% for rating_type in possible_statuses %}
                                         <option>{{ rating_type }}</option>
                                     {% endfor %}
@@ -63,7 +62,9 @@
 {% endblock %}
 
 {% block additional_scripts %}
-    <script>
+    <script async>
         if ("{{ canRedirect }}" === "y") window.location.href = "/";
     </script>
+
+    <script async src="{% static 'autocomplete_date.js' %}"></script>
 {% endblock %}

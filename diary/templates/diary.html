@@ -18,6 +18,8 @@
 
 {% block main_content %}
     <div class="diary-table">
+        <h1 class="semester-marker">1 СЕМЕСТР</h1>
+
         <div class="semester-ratings-table">
             <div class="subjects-sidebar">
                 {% for sub in subjects %}
@@ -46,7 +48,7 @@
             </div>
         </div>
 
-        <h1 class="semester-marker"></h1>
+        <h1 class="semester-marker">2 СЕМЕСТР</h1>
 
         <div class="semester-ratings-table">
             <div class="subjects-sidebar">
@@ -119,7 +121,7 @@
         </script>
     {% endfor %}
 
-    <script>
+    <script async>
         if ("{{ canRedirect }}" === "y") window.location.href = "/";
 
 

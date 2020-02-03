@@ -38,7 +38,7 @@
         </main>
 
         <footer>
-            <script>
+            <script async>
                 let toDiaryButton = document.getElementById("toDiaryButton");
                 let editRatingsButton = document.getElementById("editRatingsButton");
                 let showedButton = false;
@@ -52,8 +52,8 @@
                 }
             </script>
 
-            <script src="{% static 'buttons.js' %}"></script>
-            <script src="{% static 'registration_form.js' %}"></script>
+            <script src="{% static 'buttons.js' %}" async></script>
+            <script src="{% static 'registration_form.js' %}" async></script>
             {% block additional_scripts %}{% endblock %}
         </footer>
     </body>

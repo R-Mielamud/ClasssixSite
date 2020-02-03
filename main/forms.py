@@ -1,5 +1,6 @@
 from django.forms import *
 from main.models import User
+import hashlib
 
 class RegistrationForm(Form):
     username = CharField()
@@ -7,7 +8,9 @@ class RegistrationForm(Form):
 
     def _get_user(self):
         data = self.cleaned_data
-        user_queryset = User.objects.filter(username=data["username"], password=data["password"])
+        password_level_1 = hashlib.md5(data["password"].encode()).hexdigest()
+        password_level_2 = hashlib.md5(password_level_1.encode()).hexdigest()
+        user_queryset = User.objects.filter(username=data["username"], password=password_level_2)
         user = user_queryset.first()
         return user
 
