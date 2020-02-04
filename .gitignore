@@ -1,5 +1,9 @@
 */__pycache__/*
 */migrations/*
-*/__init__.py
+diary/templatetags/__pycache__/times.cpython-37.pyc
 manage.py
 db.sqlite3
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+celerybeat-schedule.dir
+celerybeat.pid
