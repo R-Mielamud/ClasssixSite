@@ -1,79 +1,61 @@
 from main.views import RegistrationFormView
-from editratings.forms import EditRatingsForm
+from diary.models import Subject, Month
 from main.models import User
 from diary import constants
-from diary.models import Rating, RatingSet, Subject
+import datetime
 
-class EditRatingsView(RegistrationFormView):
-    template_name = "editratings.html"
+class EditratingsView(RegistrationFormView):
     success_url = "/editratings/"
+    template_name = "editratings.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["students"] = User.objects.filter(is_teacher=False)
+
         context["subjects"] = Subject.objects.all()
-        context["possible_statuses"] = [status[0] for status in constants.RATING_TYPES]
-        registered = self.request.session.get("registered")
+        context["students"] = User.objects.filter(is_teacher=False)
+        context["months"] = Month.objects.all()
+        context["rating_statuses"] = constants.RATING_TYPES
 
-        if registered:
-            user = User.objects.get(username=registered)
+        year = str(datetime.datetime.now()).split("-")[0]
+        context["showing_dates"] = self.request.session.get("showing_dates") or [str(day) + ".09." + year for day in range(1, 11, 1)]
 
-            if not user.is_teacher:
-                context["canRedirect"] = "y"
-            else:
-                context["canRedirect"] = "n"
-        else:
-            context["canRedirect"] = "y"
+        o_month = Month.objects.filter(name=self.request.session.get("month_name")).first()
+        context["max_date"] = o_month.days if o_month else 30
+
+        context["month_name"] = o_month.name if o_month else context["months"][0].name
+        context["subject_name"] = self.request.session["subject"]
+        context["showing_date"] = self.request.session["showing_date"]
 
         return context
 
+    def _format_date_component(self, component):
+        if component >= 10:
+            return component
+        else:
+            return "0{}".format(component)
+
     def post(self, request, *args, **kwargs):
-        if request.POST.get("submit"):
-            students = User.objects.filter(is_teacher=False)
-            post = request.POST
-            subject = post.get("subject-input")
+        Post = request.POST
 
-            for student in students:
-                ratings = []
+        if Post.get("config"):
+            min_date, max_date = Post.get("showing_dates_input").split("-")
 
-                for i in range(1, 5, 1):
-                    value = post.get("rating-input-" + str(i) + "-for-" + student.username)
-                    status = post.get("status-input-" + str(i) + "-for-" + student.username)
+            month = Post.get("month_name_input")
+            o_month = Month.objects.get(name=month)
 
-                    if value != "":
-                        value = int(value)
+            year = str(datetime.datetime.now()).split("-")[0]
 
-                        ratings.append(Rating(
-                            value=value,
-                            status=status
-                        ))
+            month_num = o_month.number_in_year + 8 if o_month.number_in_year < 5 else o_month.number_in_year - 4
 
-                date = post.get("date-input-for-" + student.username)
-                date_splited = date.split("-")
-                year, month, day = date_splited
-                del year
-                month_formatted = int(month) - 8 if int(month) > 8 else int(month) + 4
+            formatted_month_num = self._format_date_component(month_num)
 
-                for r in ratings:
-                    r.save()
+            request.session["showing_dates"] = [
+                "{}.{}.{}".format(self._format_date_component(day), formatted_month_num, year)
+                for day in range(int(min_date), int(max_date) + 1, 1)
+            ]
 
-                if len(ratings) > 0:
-                    rating1 = ratings[0] if len(ratings) >= 1 else None
-                    rating2 = ratings[1] if len(ratings) >= 2 else None
-                    rating3 = ratings[2] if len(ratings) >= 3 else None
-                    rating4 = ratings[3] if len(ratings) >= 4 else None
-
-                    rating_set = RatingSet(
-                        rating1=rating1,
-                        rating2=rating2,
-                        rating3=rating3,
-                        rating4=rating4,
-                        subject=Subject.objects.get(name=subject),
-                        month=month_formatted,
-                        day=day
-                    )
-
-                    rating_set.save()
-                    student.ratings.add(rating_set)
+            request.session["month_name"] = month
+            request.session["subject"] = Post.get("subject_name_input")
+            request.session["showing_date"] = Post.get("showing_dates_input")
 
         return super().post(request, *args, **kwargs)

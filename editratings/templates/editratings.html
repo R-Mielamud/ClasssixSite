@@ -1,70 +1,81 @@
 {% extends "base.html" %}
-{% load static %}
 {% load times %}
-
-{% block additional_sheets %}
-    <link rel="stylesheet" href="{% static 'editratings-form.css' %}">
-
-    <style>
-        #editRatingsButton {
-            background-color: #00A;
-        }
-
-        #toMainButton {
-            background-color: blue;
-        }
-    </style>
-{% endblock %}
+{% load concat %}
 
 {% block main_content %}
-    <form method="post">
+    <form method="post" class="editratings-form">
         {% csrf_token %}
-
-        <div class="editratings-form-main-block">
-            <select size="1" required name="subject-input" class="editratings-form-subject-input">
-                {% for sub in subjects %}
-                    <option>{{ sub.name }}</option>
-                {% endfor %}
-            </select>
-
-            {% for student in students %}
-                <div class="editratings-form-student-block">
-                    <div class="editratings-form-student-name-gap"><span>{{ student.real_full_name }}</span></div>
-
-                    <div class="editratings-form-containers-block">
-                        <div class="editratings-form-ratings-container">
-                            {% for i in 4|times %}
-                                <input
-                                    type="number"
-                                    class="editratings-form-rating-input"
-                                    name="rating-input-{{ i }}-for-{{ student.username }}">
-                            {% endfor %}
-
-                            <input type="date" required name="date-input-for-{{ student.username }}" class="editratings-form-date-input">
-                        </div>
-
-                        <div class="editratings-form-statuses-container">
-                            {% for i in 4|times %}
-                                <select size="1" class="editratings-form-status-input" name="status-input-{{ i }}-for-{{ student.username }}">
-                                    {% for rating_type in possible_statuses %}
-                                        <option>{{ rating_type }}</option>
-                                    {% endfor %}
-                                </select>
-                            {% endfor %}
-                        </div>
-                    </div>
+        
+        <div class="editratings-form-main-content">
+            <div class="editratings-form-table">
+                <div class="editratings-form-students-sidebar">
+                    {% for student in students %}
+                        <div class="editratings-form-student-gap"><span>{{ student.real_full_name }}</span></div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
 
-            <input type="submit" value="Застосувати" name="submit" class="editratings-form-submit-button">
+                <div class="editratings-form-table-body">
+                    {% for student in students %}
+                        <div class="editratings-form-table-row">
+                            {% for i in showing_dates %}
+                                <div class="editratings-form-table-gap"></div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="editratings-form-dates-bar">
+                {% for date in showing_dates %}
+                    <div class="editratings-form-date-container"><span>{{ date }}</span></div>
+                {% endfor %}
+            </div>
         </div>
     </form>
-{% endblock %}
 
-{% block additional_scripts %}
-    <script async>
-        if ("{{ canRedirect }}" === "y") window.location.href = "/";
-    </script>
+    <form method="post" class="config-form">
+        {% csrf_token %}
 
-    <script async src="{% static 'autocomplete_date.js' %}"></script>
+        <select class="config-form-showing-dates-input" size="1" name="showing_dates_input">
+            {% if showing_date == "1-10" %}
+                <option selected>1-10</option>
+            {% else %}
+                <option>1-10</option>
+            {% endif %}
+            
+            {% if showing_date == "11-20" %}
+                <option selected>11-20</option>
+            {% else %}
+                <option>11-20</option>
+            {% endif %}
+
+            {% if showing_date == "21-"|concat:max_date %}
+                <option selected>21-{{ max_date }}</option>
+            {% else %}
+                <option>21-{{ max_date }}</option>
+            {% endif %}
+        </select>
+
+        <select class="config-form-month-name-input" size="1" name="month_name_input">
+            {% for month in months %}
+                {% if month_name == month.name %}
+                    <option selected>{{ month.name }}</option>
+                {% else %}
+                    <option>{{ month.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <select class="config-form-subject-name-input" size="1" name="subject_name_input">
+            {% for subject in subjects %}
+                {% if subject_name == subject.name %}
+                    <option selected>{{ subject.name }}</option>
+                {% else %}
+                    <option>{{ subject.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <input type="submit" class="config-form-submit-input" name="config" value="Застосувати">
+    </form>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from editratings.views import EditRatingsView
+from editratings.views import EditratingsView
 
 urlpatterns = [
-    url(r"^editratings/$", EditRatingsView.as_view())
+    url(r"^editratings/$", EditratingsView.as_view())
 ]
