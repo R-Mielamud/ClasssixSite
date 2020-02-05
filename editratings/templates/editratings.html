@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load times %}
 {% load concat %}
+{% load static %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'editratings-form.css' %}">
+    <link rel="stylesheet" href="{% static 'config-form.css' %}">
+{% endblock %}
 
 {% block main_content %}
     <form method="post" class="editratings-form">
@@ -14,47 +20,30 @@
                     {% endfor %}
                 </div>
 
-                <div class="editratings-form-table-body">
-                    {% for student in students %}
-                        <div class="editratings-form-table-row">
-                            {% for i in showing_dates %}
-                                <div class="editratings-form-table-gap"></div>
-                            {% endfor %}
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+                <div class="editratings-form-journal">
+                    <div class="editratings-form-dates-bar">
+                        {% for date in showing_dates %}
+                            <div class="editratings-form-date-container"><span>{{ date }}</span></div>
+                        {% endfor %}
+                    </div>
 
-            <div class="editratings-form-dates-bar">
-                {% for date in showing_dates %}
-                    <div class="editratings-form-date-container"><span>{{ date }}</span></div>
-                {% endfor %}
+                    <div class="editratings-form-table-body">
+                        {% for student in students %}
+                            <div class="editratings-form-table-row">
+                                {% for d in showing_dates %}
+                                    <button class="editratings-form-table-gap" id="rating-gap-{{ student.pk }}-for-date-{{ d }}"></button>
+                                    <!-- edit ratings -->
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </form>
 
     <form method="post" class="config-form">
         {% csrf_token %}
-
-        <select class="config-form-showing-dates-input" size="1" name="showing_dates_input">
-            {% if showing_date == "1-10" %}
-                <option selected>1-10</option>
-            {% else %}
-                <option>1-10</option>
-            {% endif %}
-            
-            {% if showing_date == "11-20" %}
-                <option selected>11-20</option>
-            {% else %}
-                <option>11-20</option>
-            {% endif %}
-
-            {% if showing_date == "21-"|concat:max_date %}
-                <option selected>21-{{ max_date }}</option>
-            {% else %}
-                <option>21-{{ max_date }}</option>
-            {% endif %}
-        </select>
 
         <select class="config-form-month-name-input" size="1" name="month_name_input">
             {% for month in months %}
@@ -78,4 +67,22 @@
 
         <input type="submit" class="config-form-submit-input" name="config" value="Застосувати">
     </form>
+{% endblock %}
+
+{% block additional_scripts %}
+    <script async>
+        let ratingGaps = document.getElementsByClassName("editratings-form-table-gap");
+        
+        for (let i in ratingGaps) {
+            let gap = ratingGaps[i];
+
+            gap.onclick = () => {
+                let splitedGapId = gap.id.split("-");
+                let miniRatingFormId = `mini-rating-form-${splitedGapId[2]}-for-date-${splitedGapId[5]}`;
+                let miniRatingForm = document.getElementById(miniRatingFormId);
+                miniRatingForm.style.display = "block";
+                miniRatingForm.style.left = `${215 + i * 30}`;
+            }
+        }
+    </script>
 {% endblock %}

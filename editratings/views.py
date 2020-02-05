@@ -11,20 +11,18 @@ class EditratingsView(RegistrationFormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        year = str(datetime.datetime.now()).split("-")[0]
+
+        o_month = Month.objects.filter(name=self.request.session.get("month_name")).first()
+
+        context["showing_dates"] = self.request.session.get("showing_dates") or [str(day) + ".09." + year for day in range(1, 11, 1)]
+        context["max_date"] = o_month.days if o_month else 30
+        context["month_name"] = o_month.name if o_month else context["months"][0].name
+        context["subject_name"] = self.request.session["subject"]
         context["subjects"] = Subject.objects.all()
         context["students"] = User.objects.filter(is_teacher=False)
         context["months"] = Month.objects.all()
         context["rating_statuses"] = constants.RATING_TYPES
-
-        year = str(datetime.datetime.now()).split("-")[0]
-        context["showing_dates"] = self.request.session.get("showing_dates") or [str(day) + ".09." + year for day in range(1, 11, 1)]
-
-        o_month = Month.objects.filter(name=self.request.session.get("month_name")).first()
-        context["max_date"] = o_month.days if o_month else 30
-
-        context["month_name"] = o_month.name if o_month else context["months"][0].name
-        context["subject_name"] = self.request.session["subject"]
-        context["showing_date"] = self.request.session["showing_date"]
 
         return context
 
@@ -38,8 +36,6 @@ class EditratingsView(RegistrationFormView):
         Post = request.POST
 
         if Post.get("config"):
-            min_date, max_date = Post.get("showing_dates_input").split("-")
-
             month = Post.get("month_name_input")
             o_month = Month.objects.get(name=month)
 
@@ -51,11 +47,10 @@ class EditratingsView(RegistrationFormView):
 
             request.session["showing_dates"] = [
                 "{}.{}.{}".format(self._format_date_component(day), formatted_month_num, year)
-                for day in range(int(min_date), int(max_date) + 1, 1)
+                for day in range(1, o_month.days + 1, 1)
             ]
 
             request.session["month_name"] = month
             request.session["subject"] = Post.get("subject_name_input")
-            request.session["showing_date"] = Post.get("showing_dates_input")
 
         return super().post(request, *args, **kwargs)

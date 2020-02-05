@@ -1,0 +1,45 @@
+.editratngs-form-main-content, .editratings-form-students-sidebar, .editratings-form-table-body, .editratings-form-journal {
+    display: flex;
+    flex-direction: column;
+}
+
+.editratings-form-table, .editratings-form-student-gap, .editratings-form-table-row, .editratings-form-table-gap, .editratings-form-dates-bar {
+    display: flex;
+}
+
+.editratings-form-student-gap {
+    height: 30px;
+    font-weight: 600;
+    width: 200px;
+}
+
+.editratings-form-table-gap {
+    flex-wrap: wrap;
+    height: 30px;
+    width: 30px;
+    background-color: #686;
+}
+
+.editratings-form-students-sidebar {
+    align-self: flex-end;
+}
+
+.editratings-form-student-gap, .editratings-form-table-gap, .editratings-form-date-container {
+    box-sizing: border-box;
+    border: 1px solid #000;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.editratings-form-date-container {
+    height: 100px;
+    width: 30px;
+    padding: 20px 0;
+}
+
+.editratings-form-date-container span {
+    display: block;
+    font-weight: bold;
+    transform: rotateZ(90deg);
+}

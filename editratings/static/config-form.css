@@ -1,0 +1,27 @@
+.config-form-main-content {
+    display: flex;
+}
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 130px;
+    position: absolute;
+    top: 65px;
+    left: 30px;
+    height: 80px;
+}
+
+.config-form * {
+    width: 100%;
+}
+
+.config-form-submit-input {
+    color: white;
+    background-color: blue;
+    border: 0 solid #000 !important;
+    border-radius: 10px;
+    padding: 5px 0;
+}
