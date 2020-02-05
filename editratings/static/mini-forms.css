@@ -1,0 +1,17 @@
+.set-rating-mini-form {
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #FFF;
+}
+
+.set-rating-mini-form-rating-inputs, .set-rating-mini-form-status-inputs {
+    display: flex;
+}
+
+.set-rating-mini-form-rating-input, .set-rating-mini-form-status-input {
+    width: 100px;
+    text-align: center;
+}

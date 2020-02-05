@@ -6,6 +6,7 @@
 {% block additional_sheets %}
     <link rel="stylesheet" href="{% static 'editratings-form.css' %}">
     <link rel="stylesheet" href="{% static 'config-form.css' %}">
+    <link rel="stylesheet" href="{% static 'mini-forms.css' %}">
 {% endblock %}
 
 {% block main_content %}
@@ -31,8 +32,30 @@
                         {% for student in students %}
                             <div class="editratings-form-table-row">
                                 {% for d in showing_dates %}
-                                    <button class="editratings-form-table-gap" id="rating-gap-{{ student.pk }}-for-date-{{ d }}"></button>
-                                    <!-- edit ratings -->
+                                    <input type="button" class="editratings-form-table-gap" id="rating-gap-{{ student.pk }}-for-date-{{ d }}">
+                                    
+                                    <div class="set-rating-mini-form" id="set-rating-mini-form-{{ student.pk }}-for-date-{{ d }}">
+                                        <div class="set-rating-mini-form-rating-inputs">
+                                            {% for i in 4|times %}
+                                                <input class="set-rating-mini-form-rating-input"
+                                                    id="set-rating-mini-form-rating-input-{{ i }}-{{ student.pk }}-for-date-{{ d }}">
+                                            {% endfor %}
+                                        </div>
+                            
+                                        <div class="set-rating-mini-form-status-inputs">
+                                            {% for i in 4|times %}
+                                                <select class="set-rating-mini-form-status-input" 
+                                                    size="1"
+                                                    id="set-rating-mini-form-status-input-{{ i }}-{{ student.pk }}-for-date-{{ d }}">
+                                                        {% for type in rating_statuses %}
+                                                            <option>{{ type }}</option>
+                                                        {% endfor %}
+                                                </select>
+                                            {% endfor %}
+                                        </div>
+
+                                        <input type="button" class="set-rating-mini-form-button" id="set-rating-mini-form-button-{{ student.pk }}-for-date-{{ d }}" value="OK">
+                                    </div>
                                 {% endfor %}
                             </div>
                         {% endfor %}
@@ -72,16 +95,43 @@
 {% block additional_scripts %}
     <script async>
         let ratingGaps = document.getElementsByClassName("editratings-form-table-gap");
+        let ratingGapsLen = ratingGaps.length;
         
-        for (let i in ratingGaps) {
+        for (let i = 0; i < ratingGapsLen; i++) {
             let gap = ratingGaps[i];
 
             gap.onclick = () => {
                 let splitedGapId = gap.id.split("-");
-                let miniRatingFormId = `mini-rating-form-${splitedGapId[2]}-for-date-${splitedGapId[5]}`;
+                let miniRatingFormId = `set-rating-mini-form-${splitedGapId[2]}-for-date-${splitedGapId[5]}`;
                 let miniRatingForm = document.getElementById(miniRatingFormId);
-                miniRatingForm.style.display = "block";
-                miniRatingForm.style.left = `${215 + i * 30}`;
+                miniRatingForm.style.display = "flex";
+                let date = splitedGapId[5];
+                let day = +splitedGapId[5].split(".")[0];
+                miniRatingForm.style.left = `${215 + (+day - 1) * 30}`;
+                miniRatingForm.style.top = `${175 + (+splitedGapId[2] - 1) * 15}`;
+                gap.style.backgroundColor = "blue";
+                return false;
+            }
+        }
+
+        async function setFirstStyles(form, gap) {
+            form.style.display = "none";
+            gap.style.backgroundColor = "#686";
+        }
+
+        let miniForms = document.getElementsByClassName("set-rating-mini-form");
+        let miniFormsLen = miniForms.length;
+
+        for (let i = 0; i < miniFormsLen; i++) {
+            let form = miniForms[i];
+            let children = form.children;
+            let button = children[children.length - 1];
+            let gapId = `rating-gap-${button.id.split("-")[5]}-for-date-${button.id.split("-")[8]}`;
+            let gap = document.getElementById(gapId);
+
+            button.onclick = () => {
+                setFirstStyles(form, gap);
+                return false;
             }
         }
     </script>

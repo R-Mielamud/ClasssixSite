@@ -22,7 +22,7 @@ class EditratingsView(RegistrationFormView):
         context["subjects"] = Subject.objects.all()
         context["students"] = User.objects.filter(is_teacher=False)
         context["months"] = Month.objects.all()
-        context["rating_statuses"] = constants.RATING_TYPES
+        context["rating_statuses"] = [status[0] for status in constants.RATING_TYPES]
 
         return context
 
