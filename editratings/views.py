@@ -55,10 +55,10 @@ class EditratingsView(RegistrationFormView):
 
             request.session["month_name"] = month
             request.session["subject"] = Post.get("subject_name_input")
-
-        self._work_with_POST(Post, {
-            "subject": request.session["subject"],
-            "showing_dates": request.session["showing_dates"]
-        })
+        elif Post.get("save_ratings"):
+            self._work_with_POST(Post, {
+                "subject": request.session["subject"],
+                "showing_dates": request.session["showing_dates"]
+            })
         
         return super().post(request, *args, **kwargs)
