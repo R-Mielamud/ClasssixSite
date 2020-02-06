@@ -21,7 +21,6 @@ def debug_task(self):
 def work_with_POST(Post, request):
     from diary.models import Rating, RatingSet, Subject
     from main.models import User
-    print("adfhg")
 
     year = str(datetime.datetime.now()).split("-")[0]
     dates = request["showing_dates"] or [str(day) + ".09." + year for day in range(1, 11, 1)]
