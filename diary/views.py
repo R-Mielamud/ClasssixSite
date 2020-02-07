@@ -20,7 +20,7 @@ class DiaryView(RegistrationFormView):
             context["canRedirect"] = "y"
 
         subjects = Subject.objects.all()
-        context["subjects"] = subjects
+        context["subjects"] = subjects.order_by("index")
         context["subjects_len"] = len(subjects)
         context["ratings"] = current_user.ratings.all()
         context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")

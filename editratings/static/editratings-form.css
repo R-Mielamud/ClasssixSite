@@ -43,3 +43,13 @@
     font-weight: bold;
     transform: rotateZ(90deg);
 }
+
+.editratings-form-submit-button {
+    margin: 50px 0 0 500px;
+    width: 150px;
+    height: 40px;
+    color: #FFF;
+    background-color: #0C0;
+    border: 0 solid #000;
+    border-radius: 10px;
+}

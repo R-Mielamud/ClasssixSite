@@ -9,9 +9,9 @@ def buttons(request):
     }
     
     if registered:
-        user = User.objects.get(username=registered)
+        user = User.objects.filter(username=registered).first()
 
-        if not user.is_teacher:
+        if user and (not user.is_teacher):
             context["canShowToDiaryButton"] = "y"
         else:
             context["canShowEditRatingsButton"] = "y"

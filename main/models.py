@@ -7,6 +7,7 @@ class User(Model):
     is_teacher = BooleanField(default=False)
     username = CharField(default="", max_length=100)
     password = CharField(default="", max_length=100)
+    index = IntegerField(blank=True, null=True)
 
     def __str__(self):
         return "{}".format(self.real_full_name)

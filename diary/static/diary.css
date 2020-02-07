@@ -78,10 +78,6 @@
     width: 52px;
 }
 
-.month-headers {
-    display: flex;
-}
-
 .semester-marker {
     font-size: 48px;
     color: orange;

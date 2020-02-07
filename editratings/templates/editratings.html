@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{% static 'editratings-form.css' %}">
     <link rel="stylesheet" href="{% static 'config-form.css' %}">
     <link rel="stylesheet" href="{% static 'mini-forms.css' %}">
+    <link rel="stylesheet" href="{% static 'see-all-ratings-table.css' %}">
+    <link rel="stylesheet" href="{% static 'show-subject-form.css' %}">
 {% endblock %}
 
 {% block main_content %}
@@ -39,7 +41,7 @@
                                             {% for i in 4|times %}
                                                 <input class="set-rating-mini-form-rating-input"
                                                     id="set-rating-mini-form-rating-input-{{ i }}-{{ student.pk }}-for-date-{{ d }}"
-                                                    name="set-rating-mini-form-rating-input-{{ i }}-{{ student.pk }}-for-date-{{ d }}">
+                                                    name="rating-input-{{ i }}-{{ student.pk }}-date-{{ d }}">
                                             {% endfor %}
                                         </div>
                             
@@ -48,7 +50,7 @@
                                                 <select class="set-rating-mini-form-status-input" 
                                                     size="1"
                                                     id="set-rating-mini-form-status-input-{{ i }}-{{ student.pk }}-for-date-{{ d }}"
-                                                    name="set-rating-mini-form-status-input-{{ i }}-{{ student.pk }}-for-date-{{ d }}">
+                                                    name="status-input-{{ i }}-{{ student.pk }}-date-{{ d }}">
                                                         {% for type in rating_statuses %}
                                                             <option>{{ type }}</option>
                                                         {% endfor %}
@@ -66,7 +68,7 @@
             </div>
         </div>
 
-        <input type="submit" name="save_ratings" value="Зберегти">
+        <input type="submit" name="save_ratings" value="Зберегти" class="editratings-form-submit-button">
     </form>
 
     <form method="post" class="config-form">
@@ -94,64 +96,148 @@
 
         <input type="submit" class="config-form-submit-input" name="config" value="Застосувати">
     </form>
+
+    <form method="post" class="show-subject-form">
+        {% csrf_token %}
+        <input type="submit" class="show-subject-form-submit" name="show-subject" value="Показати оцінки за обраним предметом">
+        
+        <select size="1" name="showing-subject">
+            {% for subject in subjects %}
+                <option>{{ subject.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <div class="see-all-ratings-journal">
+        <div class="see-all-ratings-semester-table">
+            <div class="see-all-ratings-table-students-sidebar">
+                {% for student in students %}
+                    <div class="see-all-ratings-table-student-gap"><span>{{ student.real_full_name }}</span></div>
+                {% endfor %}
+            </div>
+
+            <div class="see-all-ratings-table">
+                {% for month in first_semester_months %}
+                    <div class="see-all-ratings-table-month">
+                        <h1 class="month-marker">{{ month.name }}</h1>
+
+                        <div class="see-all-ratings-table-body">
+                            {% for day_number in month.days|times %}
+                                <div class="see-all-ratings-table-column" id="col-{{ month.number_in_year }}-{{ day_number }}">
+                                    <div class="see-all-ratings-table-number-gap"><span>{{ day_number }}</span></div>
+
+                                    {% for row in students_len|times %}
+                                        <div class="see-all-ratings-table-rating-gap" id="gap-{{ month.number_in_year }}-{{ day_number }}-{{ row }}"></div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="see-all-ratings-semester-table">
+            <div class="see-all-ratings-table-students-sidebar">
+                {% for student in students %}
+                    <div class="see-all-ratings-table-student-gap"><span>{{ student.real_full_name }}</span></div>
+                {% endfor %}
+            </div>
+
+            <div class="see-all-ratings-table">
+                {% for month in second_semester_months %}
+                    <div class="see-all-ratings-table-month">
+                        <h1 class="month-marker">{{ month.name }}</h1>
+
+                        <div class="see-all-ratings-table-body">
+                            {% for day_number in month.days|times %}
+                                <div class="see-all-ratings-table-column" id="col-{{ month.number_in_year }}-{{ day_number }}">
+                                    <div class="see-all-ratings-table-number-gap"><span>{{ day_number }}</span></div>
+
+                                    {% for row in students_len|times %}
+                                        <div class="see-all-ratings-table-rating-gap" id="gap-{{ month.number_in_year }}-{{ day_number }}-{{ row }}"></div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% for rating in ratings %}
+        <script async>
+            var date = "{{ rating.month }}-{{ rating.day }}";
+            var student = "{{ rating.students.first.index }}";
+
+            if ("{{ rating.rating1 }}" !== "None") {
+                let value = "{{ rating.rating1.value }}";
+                let color = "{{ rating.rating1.color }}";
+                let gapId = "gap-" + date + "-" + student;
+                let gap = document.getElementById(gapId);
+                let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
+                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+            }
+            
+            if ("{{ rating.rating2 }}" !== "None") {
+                let value = "{{ rating.rating2.value }}";
+                let color = "{{ rating.rating2.color }}";
+                let gapId = "gap-" + date + "-" + student;
+                let gap = document.getElementById(gapId);
+                let canPutSlash = "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
+                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+            }
+            
+            if ("{{ rating.rating3 }}" !== "None") {
+                let value = "{{ rating.rating3.value }}";
+                let color = "{{ rating.rating3.color }}";
+                let gapId = "gap-" + date + "-" + student;
+                let gap = document.getElementById(gapId);
+                let canPutSlash = "{{ rating.rating4 }}" !== "None";
+                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+            } 
+            
+            if ("{{ rating.rating4 }}" !== "None") {
+                let value = "{{ rating.rating4.value }}";
+                let color = "{{ rating.rating4.color }}";
+                let gapId = "gap-" + date + "-" + student;
+                let gap = document.getElementById(gapId);
+                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}</span>`;
+            }
+        </script>
+    {% endfor %}
+
+    <script async>
+        if ("{{ canRedirect }}" === "y") window.location.href = "/";
+
+
+        // ---
+        const FIRST_WEEKEND_START_DAY = 5;
+        // ---
+
+
+        let is366 = (new Date()).getFullYear() % 4 === 0;
+        const MONTHS_LENGTHS = [30, 31, 30, 31, 31, 28 + is366, 31, 30, 31];
+        let isPlus6 = false;
+        let lastJ = FIRST_WEEKEND_START_DAY;
+
+        for (let i = 1; i <= 9; i++) {
+            for (var j = lastJ; j <= MONTHS_LENGTHS[i - 1];) {
+                let column = document.getElementById(`col-${i}-${j}`);
+                let gaps = column.children;
+                for (let gap of gaps) if (gap.className === "see-all-ratings-table-rating-gap") gap.style.backgroundColor = "#FFA";
+                if ((j + (isPlus6 ? 6 : 1)) > MONTHS_LENGTHS[i - 1]) break;
+                j += isPlus6 ? 6 : 1;
+                isPlus6 = !isPlus6;
+            }
+
+            lastJ = (j - MONTHS_LENGTHS[i - 1] + (isPlus6 ? 6 : 1));
+            isPlus6 = !isPlus6;
+        }
+    </script>
 {% endblock %}
 
 {% block additional_scripts %}
-    <script async>
-        let ratingGaps = document.getElementsByClassName("editratings-form-table-gap");
-        let ratingGapsLen = ratingGaps.length;
-        let showingMiniForm = false;
-        
-        for (let i = 0; i < ratingGapsLen; i++) {
-            let gap = ratingGaps[i];
-
-            gap.onclick = () => {
-                if (!showingMiniForm) {
-                    let splitedGapId = gap.id.split("-");
-                    let miniRatingFormId = `set-rating-mini-form-${splitedGapId[2]}-for-date-${splitedGapId[5]}`;
-                    let miniRatingForm = document.getElementById(miniRatingFormId);
-                    miniRatingForm.style.display = "flex";
-                    let date = splitedGapId[5];
-                    let day = +splitedGapId[5].split(".")[0];
-                    miniRatingForm.style.left = `${215 + (+day - 1) * 30}`;
-                    miniRatingForm.style.top = `${175 + (+splitedGapId[2] - 1) * 15}`;
-                    gap.style.backgroundColor = "blue";
-                    showingMiniForm = true;
-                }
-
-                return false;
-            }
-        }
-
-        let miniForms = document.getElementsByClassName("set-rating-mini-form");
-        let miniFormsLen = miniForms.length;
-
-        for (let i = 0; i < miniFormsLen; i++) {
-            let form = miniForms[i];
-            let children = form.children;
-            let button = children[children.length - 1];
-            let gapId = `rating-gap-${button.id.split("-")[5]}-for-date-${button.id.split("-")[8]}`;
-            let gap = document.getElementById(gapId);
-
-            button.onclick = () => {
-                let inputs = form.children[0].children;
-                let input1, input2, input3, input4;
-                [input1, input2, input3, input4] = inputs;
-                let canSet0F0Bg = input1.value || input2.value || input3.value || input4.value;
-                form.style.display = "none";
-                gap.style.backgroundColor = canSet0F0Bg ? "#0F0" : "#686";
-                showingMiniForm = false;
-
-                if (canSet0F0Bg) {
-                    gap.value = input1.value || input2.value || input3.value || input4.value;
-                    gap.title = input1.value + " " + input2.value + " " + input3.value + " " + input4.value;
-                } else {
-                    gap.value = "";
-                    gap.title = "";
-                }
-
-                return false;
-            }
-        }
-    </script>
+    <script async src="{% static 'editratings_mini_forms.js' %}"></script>
 {% endblock %}

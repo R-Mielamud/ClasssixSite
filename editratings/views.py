@@ -1,5 +1,5 @@
 from main.views import RegistrationFormView
-from diary.models import Subject, Month
+from diary.models import Subject, Month, RatingSet
 from main.models import User
 from diary import constants
 from ClasssixSite.celery import work_with_POST
@@ -16,14 +16,27 @@ class EditratingsView(RegistrationFormView):
 
         o_month = Month.objects.filter(name=self.request.session.get("month_name")).first()
 
+        registered = self.request.session.get("registered")
+
+        user = User.objects.filter(username=registered).first()
+
+        show_ratings_by = self.request.session.get("ratings_subject") or "Укр. мова"
+        o_show_ratings_by = Subject.objects.get(name=show_ratings_by)
+
         context["showing_dates"] = self.request.session.get("showing_dates") or [str(day) + ".09." + year for day in range(1, 11, 1)]
         context["max_date"] = o_month.days if o_month else 30
         context["month_name"] = o_month.name if o_month else context["months"][0].name
-        context["subjects"] = Subject.objects.all()
+        context["subjects"] = Subject.objects.all().order_by("index")
         context["subject_name"] = self.request.session["subject"] or context["subjects"][0].name
-        context["students"] = User.objects.filter(is_teacher=False)
-        context["months"] = Month.objects.all()
+        context["students"] = User.objects.filter(is_teacher=False).order_by("username")
+        context["students_len"] = len(context["students"])
+        context["months"] = Month.objects.all().order_by("number_in_year")
         context["rating_statuses"] = [status[0] for status in constants.RATING_TYPES]
+        context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
+        context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")
+        context["canRedirect"] = "n" if registered and user.is_teacher else "y"
+        context["ratings"] = RatingSet.objects.filter(subject=o_show_ratings_by)
+
         return context
 
     def _format_date_component(self, component):
@@ -32,14 +45,12 @@ class EditratingsView(RegistrationFormView):
         else:
             return "0{}".format(component)
         
-    def _work_with_POST(self, Post, request):
-        work_with_POST.delay(Post, request)
+    def _work_with_POST(self, inputs, showing_dates, subject):
+        work_with_POST.delay(inputs, showing_dates, subject)
 
     def post(self, request, *args, **kwargs):
-        Post = request.POST
-
-        if Post.get("config"):
-            month = Post.get("month_name_input")
+        if request.POST.get("config"):
+            month = request.POST.get("month_name_input")
             o_month = Month.objects.get(name=month)
 
             year = str(datetime.datetime.now()).split("-")[0]
@@ -54,11 +65,11 @@ class EditratingsView(RegistrationFormView):
             ]
 
             request.session["month_name"] = month
-            request.session["subject"] = Post.get("subject_name_input")
-        elif Post.get("save_ratings"):
-            self._work_with_POST(Post, {
-                "subject": request.session["subject"],
-                "showing_dates": request.session["showing_dates"]
-            })
+            request.session["subject"] = request.POST.get("subject_name_input")
+        elif request.POST.get("save_ratings"):
+            inputs = {key: request.POST[key] for key in request.POST if key[7:12:1] == "input"}
+            self._work_with_POST(inputs, request.session.get("showing_dates"), request.session.get("subject"))
+        elif request.POST.get("show-subject"):
+            request.session["ratings_subject"] = request.POST.get("showing-subject")
         
         return super().post(request, *args, **kwargs)

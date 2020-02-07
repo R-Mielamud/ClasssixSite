@@ -18,47 +18,43 @@ def debug_task(self):
     print("Request: {0!r}".format(self.request))
 
 @app.task
-def work_with_POST(Post, request):
+def work_with_POST(inputs, showing_dates, subject):
     from diary.models import Rating, RatingSet, Subject
     from main.models import User
 
     year = str(datetime.datetime.now()).split("-")[0]
-    dates = request["showing_dates"] or [str(day) + ".09." + year for day in range(1, 11, 1)]
+    dates = showing_dates or [str(day) + ".09." + year for day in range(1, 11, 1)]
 
     for student in User.objects.filter(is_teacher=False):
-        rating_sets = []
-
         for date in dates:
             ratings = list()
             
             for i in range(1, 5, 1):
-                rating = Post.get("set-rating-mini-form-rating-input-{}-{}-for-date-{}".format(i, student.pk, date))
-                stauts = Post.get("set-rating-mini-form-status-input-{}-{}-for-date-{}".format(i, student.pk, date))
+                rating = inputs.get("rating-input-{}-{}-date-{}".format(i, student.pk, date))
+                stauts = inputs.get("status-input-{}-{}-date-{}".format(i, student.pk, date))
 
                 if rating:
-                    ratings.append(Rating(value=rating, status=stauts))
-
-            for r in ratings:
-                r.save()
+                    rating = Rating(value=rating, status=stauts)
+                    rating.save()
+                    ratings.append(rating)
 
             month = int(date.split(".")[1])
             month_formatted = month - 8 if month > 8 else month + 4
 
             if len(ratings) > 0:
-                rating_sets.append(RatingSet(
+                rating_set = RatingSet(
                     rating1=ratings[0] if len(ratings) >= 1 else None,
                     rating2=ratings[1] if len(ratings) >= 2 else None,
                     rating3=ratings[2] if len(ratings) >= 3 else None,
                     rating4=ratings[3] if len(ratings) >= 4 else None,
                     month=month_formatted,
                     day=date.split(".")[0],
-                    subject=Subject.objects.get(name=request["subject"]) or Subject.objects.all().first()
-                ))
+                    subject=Subject.objects.get(name=subject) if subject else Subject.objects.all().first()
+                )
 
-        for rs in rating_sets:
-            rs.save()
-            student.ratings.add(rs)
-        
+                rating_set.save()
+                student.ratings.add(rating_set)
+
         student.save()
 
 @periodic_task(
