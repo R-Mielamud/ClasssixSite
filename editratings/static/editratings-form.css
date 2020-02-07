@@ -7,6 +7,11 @@
     display: flex;
 }
 
+.editratings-form-dates-bar {
+    position: sticky;
+    top: 60px;
+}
+
 .editratings-form-student-gap {
     height: 30px;
     font-weight: 600;
@@ -36,6 +41,7 @@
     height: 100px;
     width: 30px;
     padding: 20px 0;
+    background-color: #FFF;
 }
 
 .editratings-form-date-container span {

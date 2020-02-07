@@ -12,9 +12,10 @@ for (let i = 0; i < ratingGapsLen; i++) {
             let miniRatingForm = document.getElementById(miniRatingFormId);
             miniRatingForm.style.display = "flex";
             let date = splitedGapId[5];
-            let day = +splitedGapId[5].split(".")[0];
+            let day = +date.split(".")[0];
             miniRatingForm.style.left = `${215 + (+day - 1) * 30}`;
-            miniRatingForm.style.top = `${175 + (+splitedGapId[2] - 1) * 15}`;
+            console.log(splitedGapId[2]);
+            miniRatingForm.style.top = `${70 + (+splitedGapId[2] * 30)}`;
             gap.style.backgroundColor = "blue";
             showingMiniForm = true;
         }

@@ -28,7 +28,7 @@ class EditratingsView(RegistrationFormView):
         context["month_name"] = o_month.name if o_month else context["months"][0].name
         context["subjects"] = Subject.objects.all().order_by("index")
         context["subject_name"] = self.request.session["subject"] or context["subjects"][0].name
-        context["students"] = User.objects.filter(is_teacher=False).order_by("username")
+        context["students"] = User.objects.filter(is_teacher=False).order_by("index")
         context["students_len"] = len(context["students"])
         context["months"] = Month.objects.all().order_by("number_in_year")
         context["rating_statuses"] = [status[0] for status in constants.RATING_TYPES]
