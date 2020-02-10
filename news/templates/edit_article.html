@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'article-form.css' %}">
+
+    <style>
+        #toMainButton {
+            background-color: blue;
+        }
+
+        #addArticleButton {
+            background-color: #00A;
+        }
+    </style>
+{% endblock %}
+
+{% block main_content %}
+    <div class="document-wrapper">
+        <form method="post" enctype="multipart/form-data" class="add-article-form">
+            {% csrf_token %}
+            <input name="header" required class="add-article-form-header" placeholder="Заголовок" value="{{ header }}">
+            <textarea name="text" required class="add-article-form-textarea" placeholder="Текст" cols="100" rows="15">{{ text }}</textarea>
+            <input type="button" id="showImageInputButton" value="Редагувати зображення">
+            <input type="hidden" id="imageChanged" name="image_changed" value="n">
+
+            <div class="add-article-form-file-container" id="imageContainer">
+                <span class="add-article-form-label">Зображення (залишить порожнім, щоб видалити):</span>
+                <input type="file" name="image" id="image" class="add-article-form-file">
+            </div>
+
+            <input type="button" id="showVideoInputButton" value="Редагувати відео">
+            <input type="hidden" id="videoChanged" name="video_changed" value="n">
+
+            <div class="add-article-form-file-container" id="videoContainer">
+                <span class="add-article-form-label">Відео (залишить порожнім, щоб видалити):</span>
+                <input type="file" name="video" class="add-article-form-file">
+            </div>
+
+            <input type="submit" name="save_article" value="Зберегти" class="add-article-form-submit">
+        </form>
+    </div>
+{% endblock %}
+
+{% block additional_scripts %}
+    <script async>
+        let imageButton = document.getElementById("showImageInputButton");
+        let imageContainer = document.getElementById("imageContainer");
+        let imageMarker = document.getElementById("imageChanged");
+
+        imageButton.onclick = () => {
+            imageContainer.style.display = "flex";
+            imageMarker.value = "y";
+        };
+
+        let videoButton = document.getElementById("showVideoInputButton");
+        let videoContainer = document.getElementById("videoContainer");
+        let videoMarker = document.getElementById("videoChanged");
+
+        videoButton.onclick = () => {
+            videoContainer.style.display = "flex";
+            videoMarker.value = "y";
+        };
+
+        if ("{{ canRedirect }}" === "y") window.location.href = "/";
+    </script>
+{% endblock %}

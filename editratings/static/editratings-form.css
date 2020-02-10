@@ -16,6 +16,8 @@
     height: 30px;
     font-weight: 600;
     width: 200px;
+    background-color: white;
+    z-index: 2;
 }
 
 .editratings-form-table-gap {
@@ -27,6 +29,9 @@
 
 .editratings-form-students-sidebar {
     align-self: flex-end;
+    position: sticky;
+    left: 0;
+    top: 0;
 }
 
 .editratings-form-student-gap, .editratings-form-table-gap, .editratings-form-date-container {

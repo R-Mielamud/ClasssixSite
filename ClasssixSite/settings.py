@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "main",
     "diary",
-    "editratings"
+    "editratings",
+    "news"
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,13 @@ TEMPLATES = [
         },
     },
 ]
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-snowflake"
+    }
+}
 
 WSGI_APPLICATION = 'ClasssixSite.wsgi.application'
 
@@ -129,6 +137,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 BROKER_URL = 'redis://localhost:6379'
 

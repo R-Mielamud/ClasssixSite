@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'article-form.css' %}">
+
+    <style>
+        #toMainButton {
+            background-color: blue;
+        }
+
+        #addArticleButton {
+            background-color: #00A;
+        }
+    </style>
+{% endblock %}
+
+{% block main_content %}
+    <div class="document-wrapper">
+        <form method="post" enctype="multipart/form-data" class="add-article-form">
+            {% csrf_token %}
+            <input name="header" required class="add-article-form-header" placeholder="Заголовок">
+            <textarea name="text" required class="add-article-form-textarea" placeholder="Текст" cols="100" rows="15"></textarea>
+
+            <div class="add-article-form-file-container">
+                <span class="add-article-form-label">Зображення (не обов'язково):</span>
+                <input type="file" name="image" id="image" class="add-article-form-file">
+            </div>
+
+            <div class="add-article-form-file-container">
+                <span class="add-article-form-label">Відео (не обов'язково):</span>
+                <input type="file" name="video" class="add-article-form-file">
+            </div>
+
+            <input type="submit" name="save_article" value="Зберегти" class="add-article-form-submit">
+        </form>
+    </div>
+{% endblock %}
+
+{% block additional_scripts %}
+    <script async>
+        if ("{{ canRedirect }}" === "y") window.location.href = "/";
+    </script>
+{% endblock %}

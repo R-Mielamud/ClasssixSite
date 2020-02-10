@@ -1,5 +1,39 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'posts.css' %}">
+{% endblock %}
 
 {% block main_content %}
+    {% for article in articles %}
+        <div class="post">
+            <h1 class="post-header">{{ article.header|upper }}</h1>
 
+            <div class="post-main-container">
+                <div class="post-text">
+                    {{ article.text }}
+                </div>
+
+                <div class="post-sidebar">
+                    {% if article.image %}
+                        <img src="{{ article.image.url }}" class="post-image">
+                    {% endif %}
+
+                    {% if article.video %}
+                        <video poster="{{ article.image.url }}" controls class="post-video">
+                            <source src="{{ article.video.url }}">
+                        </video>
+                    {% endif %}
+                </div>
+            </div>
+
+            <h3 class="post-author">{{ article.author.real_full_name }}</h3>
+
+            {% if registered and article.author.username == registered.username or registered.is_teacher %}
+                <a href="edit_article/?pk={{ article.pk }}">Редагувати</a>
+                <a href="delete_article/?pk={{ article.pk }}">Видалити</a>
+            {% endif %}
+        </div>
+    {% endfor %}
 {% endblock %}

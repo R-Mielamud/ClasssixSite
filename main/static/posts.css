@@ -1,0 +1,41 @@
+.post {
+    display: flex;
+    width: 100%;
+    margin-bottom: 50px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-header {
+    color: orange;
+    margin-bottom: 20px;
+    letter-spacing: 10px;
+}
+
+.post-main-container {
+    width: 60%;
+    display: flex;
+}
+
+.post-text {
+    width: 70%;
+    overflow-y: scroll;
+}
+
+.post-sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 30%;
+}
+
+.post-image, .post-video {
+    width: 500px;
+    width: 100%;
+}
+
+.post-author {
+    transform: translateX(200px);
+    font-style: italic;
+    color: #9997;
+}

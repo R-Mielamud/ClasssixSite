@@ -4,6 +4,7 @@ from main.models import User
 from diary import constants
 from ClasssixSite.celery import work_with_POST
 import datetime
+from django.shortcuts import redirect
 
 class EditratingsView(RegistrationFormView):
     success_url = "/editratings/"
@@ -49,6 +50,14 @@ class EditratingsView(RegistrationFormView):
         work_with_POST.delay(inputs, showing_dates, subject)
 
     def post(self, request, *args, **kwargs):
+        if not request.session.get("registered"):
+            return redirect("/")
+        else:
+            user = User.objects.get(username=request.session.get("registered"))
+
+            if not user.is_teacher:
+                return redirect("/")
+
         if request.POST.get("config"):
             month = request.POST.get("month_name_input")
             o_month = Month.objects.get(name=month)

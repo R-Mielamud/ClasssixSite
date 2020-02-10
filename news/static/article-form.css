@@ -1,0 +1,40 @@
+.document-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-article-form-header {
+    text-align: center;
+}
+
+.add-article-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-article-form * {
+    margin-bottom: 20px;
+}
+
+.add-article-form-file-container {
+    display: flex;
+}
+
+.add-article-form-label {
+    margin-right: 10px;
+}
+
+.add-article-form-submit, #showImageInputButton, #showVideoInputButton {
+    color: #FFF;
+    width: 200px;
+    height: 40px;
+    background-color: #0A0;
+    border: 0 solid #000;
+    border-radius: 10px;
+}
+
+#imageContainer, #videoContainer {
+    display: none;
+}
