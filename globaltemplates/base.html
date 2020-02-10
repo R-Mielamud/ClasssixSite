@@ -9,6 +9,16 @@
         <link rel="stylesheet" href="{% static 'top-menu.css' %}">
         <link rel="stylesheet" href="{% static 'registration-form.css' %}">
         <link rel="stylesheet" href="{% static 'diary.css' %}">
+        <link rel="shortcut icon" href="{% static 'logo.png' %}">
+
+        <style>
+            body {
+                background-image: url("{% static 'bg.jpg' %}"), linear-gradient(0deg, #DDDE, #DDDE);
+                background-blend-mode: overlay;
+                background-attachment: fixed;
+            }
+        </style>
+
         {% block additional_sheets %}{% endblock %}
         <title>6 Клас</title>
     </head>
@@ -21,6 +31,8 @@
                 <button id="toDiaryButton" class="top-menu-button top-menu-element">Щоденник</button>
                 <button id="editRatingsButton" class="top-menu-button top-menu-element">Редагувати оцінки</button>
                 <button id="addArticleButton" class="top-menu-button top-menu-element">Додати статтю</button>
+                <button id="subscribeButton" class="top-menu-button top-menu-element top-menu-subscribe-button">Підписатися</button>
+                <button id="unsubscribeButton" class="top-menu-button top-menu-element top-menu-unsubscribe-button">Відписатися</button>
                 <button id="registrationButton" class="top-menu-button top-menu-element top-menu-registration-button">Вхід</button>
                 <button id="unregistrationButton" class="top-menu-button top-menu-element top-menu-unregistration-button">Вихід</button>
             </div>
@@ -47,10 +59,14 @@
                 if ("{{ canShowToDiaryButton }}" === "y") {
                     toDiaryButton.style.display = "block";
                     addArticleButton.style.display = "block";
+                    if ("{{ canShowUnsubscribeButton }}" === "y") unsubscribeButton.style.display = "block";
+                    else subscribeButton.style.display = "block";
                     showedButton = true;
                 } else if ("{{ canShowEditRatingsButton }}" === "y") {
                     editRatingsButton.style.display = "block";
                     addArticleButton.style.display = "block";
+                    if ("{{ canShowUnsubscribeButton }}" === "y") unsubscribeButton.style.display = "block";
+                    else subscribeButton.style.display = "block";
                     showedButton = true;
                 }
             </script>

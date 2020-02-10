@@ -5,7 +5,8 @@ def buttons(request):
 
     context = {
         "canShowToDiaryButton": "n",
-        "canShowEditRatingsButton": "n"
+        "canShowEditRatingsButton": "n",
+        "canShowUnsubscribeButton": "n"
     }
     
     if registered:
@@ -15,5 +16,8 @@ def buttons(request):
             context["canShowToDiaryButton"] = "y"
         else:
             context["canShowEditRatingsButton"] = "y"
+
+        if user and user.email:
+            context["canShowUnsubscribeButton"] = "y"
 
     return context

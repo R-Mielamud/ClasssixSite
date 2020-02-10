@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'subscribe-form.css' %}">
+{% endblock %}
+
+{% block main_content %}
+    <form method="post" class="subscribe-form">
+        {% csrf_token %}
+        <input type="email" placeholder="E-mail" name="email" class="subscribe-form-email">
+        <input type="submit" class="subscribe-form-submit" value="Підписатися" name="subscribe">
+
+        {% if can_show_warning %}
+            <h2 class="warning">Неправильний e-mail!</h2>
+        {% endif %}
+    </form>
+{% endblock %}
+
+{% block additional_scripts %}
+    <script async>
+        if ("{{ canRedirect }}" === "y") window.location.href = "/"
+    </script>
+{% endblock %}

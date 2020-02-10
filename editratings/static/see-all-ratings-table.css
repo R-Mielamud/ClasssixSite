@@ -31,6 +31,7 @@
     font-weight: bold;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .month-marker {
@@ -55,6 +56,7 @@
 .see-all-ratings-table-rating-gap {
     border: 1px solid black;
     width: 50px;
+    background-color: white;
 }
 
 .see-all-ratings-table-number-gap {

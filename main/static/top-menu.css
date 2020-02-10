@@ -38,7 +38,7 @@
     display: block;
 }
 
-.top-menu-registration-button, .top-menu-unregistration-button {
+.top-menu-registration-button, .top-menu-unregistration-button, .top-menu-unsubscribe-button {
     background-color: blue;
     border: 3px solid #FFF !important;
     padding: 0px 50px;
@@ -51,6 +51,6 @@
     display: block;
 }
 
-.top-menu-unregistration-button {
+.top-menu-unregistration-button, .top-menu-subscribe-button, .top-menu-unsubscribe-button {
     display: none;
 }

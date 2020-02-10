@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .ratings-table {
@@ -72,6 +73,7 @@
 .rating-gap {
     border: 1px solid black;
     width: 50px;
+    background-color: white;
 }
 
 .rating-number-gap {

@@ -7,6 +7,8 @@ class User(Model):
     is_teacher = BooleanField(default=False)
     username = CharField(default="", max_length=100)
     password = CharField(default="", max_length=100)
+    email = EmailField(null=True, blank=True)
+    is_subscriber = BooleanField(default=False)
     index = IntegerField(blank=True, null=True)
 
     def __str__(self):

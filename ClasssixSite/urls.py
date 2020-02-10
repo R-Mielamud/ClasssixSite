@@ -23,7 +23,8 @@ urlpatterns = [
     path("", include("main.urls")),
     path("", include("diary.urls")),
     path("", include("editratings.urls")),
-    path("", include("news.urls"))
+    path("", include("news.urls")),
+    path("", include("subscribe.urls"))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

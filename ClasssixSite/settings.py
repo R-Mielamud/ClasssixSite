@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "main",
     "diary",
     "editratings",
-    "news"
+    "news",
+    "subscribe"
 ]
 
 MIDDLEWARE = [
@@ -153,3 +154,15 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 CELERY_TIMEZONE = 'Africa/Nairobi'
+
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+# EMAIL_HOST = "smtp.gmail.com"
+
+# EMAIL_USE_TLS = True
+
+# EMAIL_PORT = 587
+
+# EMAIL_HOST_USER = "2m.roman2@gmail.com"
+
+# EMAIL_HOST_PASSWORD = "My-Email"
