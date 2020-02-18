@@ -20,6 +20,7 @@ from . import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/", include("api.urls")),
     path("", include("main.urls")),
     path("", include("diary.urls")),
     path("", include("editratings.urls")),

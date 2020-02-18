@@ -4,6 +4,8 @@
     margin-bottom: 50px;
     flex-direction: column;
     align-items: center;
+    background-color: #FFF;
+    border-radius: 20px;
 }
 
 .post-header {
@@ -19,7 +21,8 @@
 
 .post-text {
     width: 70%;
-    overflow-y: scroll;
+    max-height: 250px;
+    white-space: pre-line;
 }
 
 .post-sidebar {
@@ -34,8 +37,8 @@
     width: 100%;
 }
 
-.post-author {
+.post-light-text {
     transform: translateX(200px);
     font-style: italic;
-    color: #9997;
+    color: #9999;
 }

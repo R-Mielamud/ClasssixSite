@@ -28,7 +28,8 @@
                 </div>
             </div>
 
-            <h3 class="post-author">{{ article.author.real_full_name }}</h3>
+            <h3 class="post-light-text">{{ article.date }}</h3>
+            <h3 class="post-light-text">{{ article.author.real_full_name }}</h3>
 
             {% if registered and article.author.username == registered.username or registered.is_teacher %}
                 <a href="edit_article/?pk={{ article.pk }}">Редагувати</a>
@@ -36,4 +37,16 @@
             {% endif %}
         </div>
     {% endfor %}
+{% endblock %}
+
+{% block additional_scripts %}
+    <script async>
+        let posts = document.getElementsByClassName("post-text");
+        console.log(posts);
+        
+        for (let post of posts) {
+            console.log(post.innerHTML.split(/\r\n|\r|\n/g).length);
+            if (post.innerHTML.split(/\r\n|\r|\n/g).length > 10) post.style.overflowY = "scroll";
+        }
+    </script>
 {% endblock %}
