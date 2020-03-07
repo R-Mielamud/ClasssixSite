@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "news",
     "subscribe",
     "api",
+    "theme_select",
     "rest_framework"
 ]
 

@@ -6,7 +6,8 @@ def buttons(request):
     context = {
         "canShowToDiaryButton": "n",
         "canShowEditRatingsButton": "n",
-        "canShowUnsubscribeButton": "n"
+        "canShowUnsubscribeButton": "n",
+        "theme": request.session.get("theme") or "Light"
     }
     
     if registered:

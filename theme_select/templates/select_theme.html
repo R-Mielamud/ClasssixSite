@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'select_theme.css' %}">
+
+    <style>
+        #toMainButton {
+            background-color: blue;
+        }
+
+        #selectThemeButton{
+            background-color: #00A;
+        }
+    </style>
+{% endblock %}
+
+{% block main_content %}
+    <form method="post" class="select-theme-form">
+        {% csrf_token %}
+
+        <select name="theme" class="select-theme-input">
+            <option>Light</option>
+            <option selected>Dark</option>
+        </select>
+
+        <input type="submit" value="Обрати тему" class="select-theme-form-submit">
+    </form>
+{% endblock %}

@@ -6,6 +6,7 @@ let toMainButton = document.getElementById("toMainButton");
 let addArticleButton = document.getElementById("addArticleButton");
 let unsubscribeButton = document.getElementById("unsubscribeButton");
 let subscribeButton = document.getElementById("subscribeButton");
+let selectThemeButton = document.getElementById("selectThemeButton");
 
 registrationButton.onclick = () => registrationFormBg.style.display = "flex";
 registrationFormReset.onclick = () => registrationFormBg.style.display = "none";
@@ -16,6 +17,7 @@ editRatingsButton.onclick = () => window.location.href = "/editratings/";
 addArticleButton.onclick = () => window.location.href = "/add_article/";
 subscribeButton.onclick = () => window.location.href = "/subscribe/";
 unsubscribeButton.onclick = () => window.location.href = "/unsubscribe/";
+selectThemeButton.onclick = () => window.location.href = "/select_theme/";
 
 if (showedButton) {
     registrationButton.style.display = "none";
