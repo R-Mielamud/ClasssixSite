@@ -24,14 +24,14 @@ class EditratingsView(RegistrationFormView):
         show_ratings_by = self.request.session.get("ratings_subject") or "Укр. мова"
         o_show_ratings_by = Subject.objects.get(name=show_ratings_by)
 
-        context["showing_dates"] = self.request.session.get("showing_dates") or [str(day) + ".09." + year for day in range(1, 11, 1)]
+        context["showing_dates"] = self.request.session.get("showing_dates") or [str(self._format_date_component(day)) + ".09." + year for day in range(1, 31, 1)]
         context["max_date"] = o_month.days if o_month else 30
-        context["month_name"] = o_month.name if o_month else context["months"][0].name
         context["subjects"] = Subject.objects.all().order_by("index")
-        context["subject_name"] = self.request.session["subject"] or context["subjects"][0].name
+        context["subject_name"] = self.request.session.get("subject") or context["subjects"][0].name
         context["students"] = User.objects.filter(is_teacher=False).order_by("index")
         context["students_len"] = len(context["students"])
         context["months"] = Month.objects.all().order_by("number_in_year")
+        context["month_name"] = o_month.name if o_month else context["months"][0].name
         context["rating_statuses"] = [status[0] for status in constants.RATING_TYPES]
         context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
         context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")

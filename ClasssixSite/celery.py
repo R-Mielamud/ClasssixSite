@@ -37,8 +37,14 @@ def work_with_POST(inputs, showing_dates, subject):
     from diary.models import Rating, RatingSet, Subject
     from main.models import User
 
+    def format_date_component(component):
+        if component >= 10:
+            return str(component)
+        else:
+            return "0{}".format(component)
+
     year = str(datetime.datetime.now()).split("-")[0]
-    dates = showing_dates or [str(day) + ".09." + year for day in range(1, 11, 1)]
+    dates = showing_dates or [format_date_component(day) + ".09." + year for day in range(1, 31, 1)]
 
     for student in User.objects.filter(is_teacher=False):
         for date in dates:
@@ -88,3 +94,38 @@ def set_days_in_February():
     else:
         February.days = 28
         February.save()
+
+@periodic_task(
+    run_every=(crontab(minute="*/1")),
+    name="calculate_middle_ratings",
+    ignore_result=True
+)
+def calculate_middle_ratings():
+    from main.models import User
+    students = User.objects.filter(is_teacher=False)
+
+    for student in students:
+        rating_sum = 0
+        ratings_count = 0
+        rating_sets = student.ratings.all()
+
+        for rating_set in rating_sets:
+            if rating_set.rating1:
+                rating_sum += rating_set.rating1.value
+                ratings_count += 1
+
+            if rating_set.rating2:
+                rating_sum += rating_set.rating2.value
+                ratings_count += 1
+
+            if rating_set.rating3:
+                rating_sum += rating_set.rating3.value
+                ratings_count += 1
+
+            if rating_set.rating4:
+                rating_sum += rating_set.rating4.value
+                ratings_count += 1
+        
+        middle_rating = round(rating_sum / ratings_count, 2) if ratings_count != 0 else 12
+        student.middle_rating = middle_rating
+        student.save()

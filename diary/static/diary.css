@@ -87,3 +87,9 @@
     text-align: center;
     margin: 20px 0;
 }
+
+.student-middle-rating {
+    letter-spacing: 4px;
+    text-align: center;
+    width: 100%;
+}

@@ -23,6 +23,7 @@ class DiaryView(RegistrationFormView):
         context["subjects"] = subjects.order_by("index")
         context["subjects_len"] = len(subjects)
         context["ratings"] = current_user.ratings.all()
+        context["middle_rating"] = current_user.middle_rating
         context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
         context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")
         return context

@@ -77,6 +77,14 @@
                 {% endfor %}
             </div>
         </div>
+
+        {% if middle_rating >= 9 %}
+            <h2 class="student-middle-rating" style="color: rgb(0, 255, 0);">Середня оцінка по всім предметам: {{ middle_rating }}</h2>
+        {% elif middle_rating < 9 and middle_rating >= 5 %}
+            <h2 class="student-middle-rating" style="color: rgb(255, 200, 0);">Середня оцінка по всім предметам: {{ middle_rating }}</h2>
+        {% elif middle_rating < 5 %}
+            <h2 class="student-middle-rating" style="color: rgb(255, 0, 0);">Середня оцінка по всім предметам: {{ middle_rating }}</h2>
+        {% endif %}
     </div>
 
     {% for rating in ratings %}
@@ -90,7 +98,7 @@
                 let gapId = "gap-" + date + "-" + subject;
                 let gap = document.getElementById(gapId);
                 let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
-                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
             }
             
             if ("{{ rating.rating2 }}" !== "None") {
