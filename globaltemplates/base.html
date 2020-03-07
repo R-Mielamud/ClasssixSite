@@ -13,7 +13,7 @@
 
         <style>
             body {
-                background-image: url("{% static 'bg.jpg' %}"), linear-gradient(0deg, #DDDE, #DDDE);
+                background-image: url("{% static 'bg.jpg' %}"), linear-gradient(0deg, #0009, #0009);
                 background-blend-mode: overlay;
                 background-attachment: fixed;
             }
@@ -41,7 +41,8 @@
 
         <main>
             <div class="modal-window-bg" id="registrationFormBg">
-                <form method="post" class="registration-form">{% csrf_token %}
+                <form method="post" class="registration-form">
+                    {% csrf_token %}
                     {{ form.as_p }}
                     <input type="submit" value="Увійти" class="registration-form-button-input">
                     <input type="reset" id="registrationFormReset" value="Скасувати" class="registration-form-button-input">
