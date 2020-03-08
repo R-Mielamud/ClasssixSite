@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{% static 'site.css' %}">
         <link rel="stylesheet" href="{% static 'top-menu.css' %}">
         <link rel="stylesheet" href="{% static 'registration-form.css' %}">
-        <link rel="stylesheet" href="{% static 'diary.css' %}">
+        <link rel="stylesheet" href="{% static 'info.css' %}">
         <link rel="shortcut icon" href="{% static 'logo_shortcut.png' %}">
 
         <style>
@@ -67,6 +67,15 @@
         </main>
 
         <footer>
+            <div class="info-container">
+                <div class="info-wrapper">
+                    <div class="info-anchor-container">
+                        <img class="info-anchor-sprite" src="{% static 'facebook_sprite.png' %}">
+                        <a href="https://www.facebook.com/lyceum.odessa/" class="info-anchor" target="_blank">Facebook Рішельєвського ліцею</a>
+                    </div>
+                </div>
+            </div>
+            
             <script async>
                 let toDiaryButton = document.getElementById("toDiaryButton");
                 let editRatingsButton = document.getElementById("editRatingsButton");
