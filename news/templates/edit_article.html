@@ -26,6 +26,7 @@
 
             <div class="add-article-form-file-container" id="imageContainer">
                 <span class="add-article-form-label">Зображення (залишить порожнім, щоб видалити):</span>
+                <span id="selectImageInputButton" class="add-article-form-input-alter-button">Обрати файл .jpg, .jpeg, .png або .bmp (<span id="selectImageStatus">не обрано</span>)</span>
                 <input type="file" name="image" id="image" class="add-article-form-file" accept=".jpg, .jpeg, .png, .bmp">
             </div>
 
@@ -34,7 +35,8 @@
 
             <div class="add-article-form-file-container" id="videoContainer">
                 <span class="add-article-form-label">Відео (залишить порожнім, щоб видалити):</span>
-                <input type="file" name="video" class="add-article-form-file" accept=".mp4">
+                <span id="selectVideoInputButton" class="add-article-form-input-alter-button">Обрати файл .mp4 (<span id="selectVideoStatus">не обрано</span>)</span>
+                <input type="file" name="video" id="video" class="add-article-form-file" accept=".mp4">
             </div>
 
             <input type="submit" name="save_article" value="Зберегти" class="add-article-form-submit">
@@ -61,6 +63,18 @@
             videoContainer.style.display = "flex";
             videoMarker.value = "y";
         };
+
+        let selectVideoButton = document.getElementById("selectVideoInputButton");
+        let selectVideoStatus = document.getElementById("selectVideoStatus");
+        let video = document.getElementById("video");
+        selectVideoButton.onclick = () => video.click();
+        video.onchange = () => selectVideoStatus.innerText = video.value.split(/(\\|\/)/).pop();
+
+        let selectImageButton = document.getElementById("selectImageInputButton");
+        let selectImageStatus = document.getElementById("selectImageStatus");
+        let image = document.getElementById("image");
+        selectImageButton.onclick = () => image.click();
+        image.onchange = () => selectImageStatus.innerText = image.value.split(/(\\|\/)/).pop();
 
         if ("{{ canRedirect }}" === "y") window.location.href = "/";
     </script>
