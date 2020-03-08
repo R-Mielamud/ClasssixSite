@@ -3,8 +3,8 @@ from main.models import User
 import hashlib
 
 class RegistrationForm(Form):
-    username = CharField()
-    password = CharField(widget=PasswordInput)
+    username = CharField(required=True, widget=TextInput(attrs={"autocomplete": "off"}))
+    password = CharField(widget=PasswordInput, required=True)
 
     def _get_user(self):
         data = self.cleaned_data

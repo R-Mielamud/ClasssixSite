@@ -12,6 +12,10 @@
         #addArticleButton {
             background-color: #00A;
         }
+
+        #addArticleButton:after {
+            content: " (Редагування)";
+        }
     </style>
 {% endblock %}
 
@@ -19,7 +23,7 @@
     <div class="document-wrapper">
         <form method="post" enctype="multipart/form-data" class="add-article-form">
             {% csrf_token %}
-            <input name="header" required class="add-article-form-header" placeholder="Заголовок" value="{{ header }}">
+            <input name="header" required class="add-article-form-header" placeholder="Заголовок" value="{{ header }}" autocomplete="off">
             <textarea name="text" required class="add-article-form-textarea" placeholder="Текст" cols="100" rows="15">{{ text }}</textarea>
             <input type="button" id="showImageInputButton" value="Редагувати зображення">
             <input type="hidden" id="imageChanged" name="image_changed" value="n">

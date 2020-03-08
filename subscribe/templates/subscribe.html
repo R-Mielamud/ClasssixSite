@@ -18,7 +18,7 @@
 {% block main_content %}
     <form method="post" class="subscribe-form">
         {% csrf_token %}
-        <input type="email" placeholder="E-mail" name="email" class="subscribe-form-email">
+        <input type="email" placeholder="E-mail" name="email" class="subscribe-form-email" required autocomplete="off">
         <input type="submit" class="subscribe-form-submit" value="Підписатися" name="subscribe">
 
         {% if can_show_warning %}

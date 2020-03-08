@@ -32,8 +32,8 @@
             <h3 class="post-light-text">{{ article.author.real_full_name }}</h3>
 
             {% if registered and article.author.username == registered.username or registered.is_teacher %}
-                <a href="edit_article/?pk={{ article.pk }}">Редагувати</a>
-                <a href="delete_article/?pk={{ article.pk }}">Видалити</a>
+                <a href="edit_article/?pk={{ article.pk }}" class="post-anchor">Редагувати</a>
+                <a href="delete_article/?pk={{ article.pk }}" class="post-anchor">Видалити</a>
             {% endif %}
         </div>
     {% endfor %}

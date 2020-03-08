@@ -19,7 +19,7 @@
     <div class="document-wrapper">
         <form method="post" enctype="multipart/form-data" class="add-article-form">
             {% csrf_token %}
-            <input name="header" required class="add-article-form-header" placeholder="Заголовок">
+            <input name="header" required class="add-article-form-header" placeholder="Заголовок" autocomplete="off">
             <textarea name="text" required class="add-article-form-textarea" placeholder="Текст" cols="80" rows="12"></textarea>
 
             <div class="add-article-form-file-container">

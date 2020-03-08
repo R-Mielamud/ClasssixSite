@@ -33,7 +33,7 @@
 }
 
 .post-image, .post-video {
-    width: 500px;
+    height: auto;
     width: 100%;
 }
 
@@ -41,4 +41,17 @@
     transform: translateX(200px);
     font-style: italic;
     color: #9999;
+}
+
+.post-anchor {
+    color: green;
+    text-decoration: none;
+}
+
+.post-anchor:visited {
+    color: rgb(0, 200, 0);
+}
+
+.post-anchor:hover {
+    text-decoration: underline;
 }
