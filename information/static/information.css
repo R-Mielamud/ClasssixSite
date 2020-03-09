@@ -67,6 +67,6 @@
 
 .schedule-table-day-marker {
     text-align: center;
-    color: green;
+    color: rgb(0, 200, 0);
     text-transform: uppercase;
 }
