@@ -1,13 +1,36 @@
 .info-container {
     display: flex;
-    height: 100px;
+    height: 150px;
+    width: 100%;
+    background-color: black;
+    justify-content: center;
+}
+
+.info-box {
     width: 100%;
     z-index: 3;
     position: fixed;
     left: 0;
     bottom: 0;
-    background-color: black;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transform: translateY(120px);
+}
+
+.info-box:hover {
+    transform: translateY(0);
+}
+
+.info-triangle {
+    border-top: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #00A;
+    border-left: 20px solid transparent;
+    width: 0;
+    height: 0;
 }
 
 .info-wrapper {

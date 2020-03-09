@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'information.css' %}">
+
+    <style>
+        #toMainButton {
+            background-color: blue;
+        }
+
+        #toInformationButton {
+            background-color: #00A;
+        }
+    </style>
+{% endblock %}
+
+{% block main_content %}
+    <div class="content-wrapper">
+        <h1 class="table-marker">Наші вчителі:</h1>
+
+        <div class="teachers-table">
+            {% for teacher_data in teacher_data_sets %}
+                <div class="teachers-table-row">
+                    <div class="table-gap teachers-table-name-gap"><span>{{ teacher_data.full_name }}</span></div>
+                    <div class="table-gap teachers-table-subject-gap"><span>{{ teacher_data.subject.name }}</span></div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h1 class="table-marker">Розклад:</h1>
+
+        <div class="schedule-table">
+            <div class="schedule-table-day">
+                <h2 class="schedule-table-day-marker">Понеділок</h2>
+
+                {% for subject in monday_subjects %}
+                    <div class="schedule-table-row">
+                        <div class="table-gap schedule-table-subject-gap"><span>{{ subject.day_index }}. {{ subject.subject }}</span></div>
+                        <div class="table-gap schedule-table-cabinet-gap"><span>{{ subject.cabinet }}</span></div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="schedule-table-day">
+                <h2 class="schedule-table-day-marker">Вівторок</h2>
+
+                {% for subject in tuesday_subjects %}
+                    <div class="schedule-table-row">
+                        <div class="table-gap schedule-table-subject-gap"><span>{{ subject.day_index }}. {{ subject.subject }}</span></div>
+                        <div class="table-gap schedule-table-cabinet-gap"><span>{{ subject.cabinet }}</span></div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="schedule-table-day">
+                <h2 class="schedule-table-day-marker">Середа</h2>
+
+                {% for subject in wednesday_subjects %}
+                    <div class="schedule-table-row">
+                        <div class="table-gap schedule-table-subject-gap"><span>{{ subject.day_index }}. {{ subject.subject }}</span></div>
+                        <div class="table-gap schedule-table-cabinet-gap"><span>{{ subject.cabinet }}</span></div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="schedule-table-day">
+                <h2 class="schedule-table-day-marker">Четвер</h2>
+
+                {% for subject in thursday_subjects %}
+                    <div class="schedule-table-row">
+                        <div class="table-gap schedule-table-subject-gap"><span>{{ subject.day_index }}. {{ subject.subject }}</span></div>
+                        <div class="table-gap schedule-table-cabinet-gap"><span>{{ subject.cabinet }}</span></div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="schedule-table-day">
+                <h2 class="schedule-table-day-marker">П'ятниця</h2>
+
+                {% for subject in friday_subjects %}
+                    <div class="schedule-table-row">
+                        <div class="table-gap schedule-table-subject-gap"><span>{{ subject.day_index }}. {{ subject.subject }}</span></div>
+                        <div class="table-gap schedule-table-cabinet-gap"><span>{{ subject.cabinet }}</span></div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

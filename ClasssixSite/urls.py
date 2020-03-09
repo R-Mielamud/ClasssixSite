@@ -26,7 +26,8 @@ urlpatterns = [
     path("", include("editratings.urls")),
     path("", include("news.urls")),
     path("", include("subscribe.urls")),
-    path("", include("theme_select.urls"))
+    path("", include("theme_select.urls")),
+    path("", include("information.urls"))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
