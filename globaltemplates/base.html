@@ -15,22 +15,9 @@
             body {
                 background-blend-mode: overlay;
                 background-attachment: fixed;
+                /*background-image: url("{% static 'bg.jpg' %}");*/
             }
         </style>
-
-        {% if theme == "Light" %}
-            <style>
-                body {
-                    background-image: url("{% static 'bg.jpg' %}"), linear-gradient(0deg, #DDD9, #DDD9);
-                }
-            </style>
-        {% else %}
-            <style>
-                body {
-                    background-image: url("{% static 'bg.jpg' %}"), linear-gradient(0deg, #0009, #0009);
-                }
-            </style>
-        {% endif %}
 
         {% block additional_sheets %}{% endblock %}
         <title>6 Клас</title>
@@ -80,6 +67,24 @@
                     </div>
                 </div>
             </div>
+
+            <script>
+                document.body.style.backgroundImage = "url(\"{% static 'bg.jpg' %}\")";
+            </script>
+
+            {% if theme == "Light" %}
+                <script>
+                    document.body.style.backgroundImage += ", linear-gradient(0deg, #DDDB, #DDDB)";
+                </script>
+            {% elif theme == "Dark" %}
+                <script>
+                    document.body.style.backgroundImage += ", linear-gradient(0deg, #444F, #444F)";
+                </script>
+            {% elif theme == "Blue" %}
+                <script>
+                    document.body.style.backgroundImage = "url(\"{% static 'flowers_theme_blue.gif' %}\"), linear-gradient(0deg, #DDDB, #DDDB)";
+                </script>
+            {% endif %}
             
             <script async>
                 let toDiaryButton = document.getElementById("toDiaryButton");

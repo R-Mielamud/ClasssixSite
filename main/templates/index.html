@@ -42,11 +42,8 @@
 {% block additional_scripts %}
     <script async>
         let posts = document.getElementsByClassName("post-text");
-        console.log(posts);
         
-        for (let post of posts) {
-            console.log(post.innerHTML.split(/\r\n|\r|\n/g).length);
+        for (let post of posts)
             if (post.innerHTML.split(/\r\n|\r|\n/g).length > 10) post.style.overflowY = "scroll";
-        }
     </script>
 {% endblock %}

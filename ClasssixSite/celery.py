@@ -2,7 +2,7 @@ from __future__ import absolute_import
 import os
 from celery import Celery
 from django.conf import settings
-from celery.task import periodic_task
+from celery.task import periodic_task, task
 from celery.schedules import crontab
 from diary import constants
 # from django.core import mail
@@ -18,7 +18,7 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 def debug_task(self):
     print("Request: {0!r}".format(self.request))
 
-# @app.task
+# @task
 # def send_emails(data):
 #     from main.models import User
 
@@ -32,7 +32,7 @@ def debug_task(self):
 #         fail_silently=False
 #     )
 
-@app.task
+@task
 def work_with_POST(inputs, showing_dates, subject):
     from diary.models import Rating, RatingSet, Subject
     from main.models import User
