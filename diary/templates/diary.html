@@ -91,12 +91,12 @@
         <script async>
             var date = "{{ rating.month }}-{{ rating.day }}";
             var subject = "{{ rating.subject.index }}";
+            let gapId = "gap-" + date + "-" + subject;
+            let gap = document.getElementById(gapId);
 
             if ("{{ rating.rating1 }}" !== "None") {
                 let value = "{{ rating.rating1.value }}";
                 let color = "{{ rating.rating1.color }}";
-                let gapId = "gap-" + date + "-" + subject;
-                let gap = document.getElementById(gapId);
                 let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
                 gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
             }
@@ -104,8 +104,6 @@
             if ("{{ rating.rating2 }}" !== "None") {
                 let value = "{{ rating.rating2.value }}";
                 let color = "{{ rating.rating2.color }}";
-                let gapId = "gap-" + date + "-" + subject;
-                let gap = document.getElementById(gapId);
                 let canPutSlash = "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
                 gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
             }
@@ -113,8 +111,6 @@
             if ("{{ rating.rating3 }}" !== "None") {
                 let value = "{{ rating.rating3.value }}";
                 let color = "{{ rating.rating3.color }}";
-                let gapId = "gap-" + date + "-" + subject;
-                let gap = document.getElementById(gapId);
                 let canPutSlash = "{{ rating.rating4 }}" !== "None";
                 gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
             } 
@@ -122,8 +118,6 @@
             if ("{{ rating.rating4 }}" !== "None") {
                 let value = "{{ rating.rating4.value }}";
                 let color = "{{ rating.rating4.color }}";
-                let gapId = "gap-" + date + "-" + subject;
-                let gap = document.getElementById(gapId);
                 gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}</span>`;
             }
         </script>
