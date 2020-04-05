@@ -58,7 +58,7 @@ class GetMonthsViewSet(ApiKeyRequiredModelViewSet):
     
     def get_queryset(self):
         return super().get_queryset_with_checking(
-            Month.objects.all(),
+            Month.objects.order_by("number_in_year"),
             []
         )
 
