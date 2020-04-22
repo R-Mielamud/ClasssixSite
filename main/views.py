@@ -1,5 +1,5 @@
 from main.forms import RegistrationForm
-from django.views.generic import FormView
+from django.views.generic import FormView, base
 from main.models import User
 from news.models import Article
 
@@ -34,3 +34,6 @@ class RegistrationAndMainView(RegistrationFormView):
             context["registered"] = None
 
         return context
+
+class StopSpamView(base.TemplateView):
+    template_name = "stop_spam.html"
