@@ -21,8 +21,8 @@ class EditratingsView(RegistrationFormView):
 
         user = User.objects.filter(username=registered).first()
 
-        show_ratings_by = self.request.session.get("ratings_subject") or "Укр. мова"
-        o_show_ratings_by = Subject.objects.get(name=show_ratings_by)
+        show_ratings_by = self.request.session.get("ratings_subject")
+        o_show_ratings_by = Subject.objects.filter(name=show_ratings_by).first()
 
         context["showing_dates"] = self.request.session.get("showing_dates") or [str(self._format_date_component(day)) + ".09." + year for day in range(1, 31, 1)]
         context["max_date"] = o_month.days if o_month else 30
@@ -36,7 +36,9 @@ class EditratingsView(RegistrationFormView):
         context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
         context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")
         context["canRedirect"] = "n" if registered and user.is_teacher else "y"
-        context["ratings"] = RatingSet.objects.filter(subject=o_show_ratings_by)
+
+        if o_show_ratings_by:
+            context["ratings"] = RatingSet.objects.filter(subject=o_show_ratings_by)
 
         return context
 
