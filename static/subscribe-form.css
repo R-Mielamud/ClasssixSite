@@ -1,0 +1,26 @@
+.subscribe-form {
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.subscribe-form-submit {
+    color: #FFF;
+    background-color: #FC0;
+    width: 200px;
+    height: 40px;
+    border: 0 solid #000;
+    border-radius: 10px;
+}
+
+.subscribe-form-email, .subscribe-form-submit {
+    text-align: center;
+}
+
+.warning {
+    color: red;
+}

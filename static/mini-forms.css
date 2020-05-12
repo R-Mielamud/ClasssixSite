@@ -1,0 +1,28 @@
+.set-rating-mini-form {
+    display: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #FFF;
+    border: 2px double orange;
+}
+
+.set-rating-mini-form-rating-inputs, .set-rating-mini-form-status-inputs {
+    display: flex;
+}
+
+.set-rating-mini-form-rating-input, .set-rating-mini-form-status-input {
+    width: 100px;
+    text-align: center;
+}
+
+.set-rating-mini-form-button {
+    margin-top: 10px;
+    width: 90px;
+    height: 30px;
+    color: #FFF;
+    background-color: #F00;
+    border: 0 solid #000;
+    border-radius: 10px;
+}

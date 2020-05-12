@@ -1,0 +1,74 @@
+.see-all-ratings-journal, .see-all-ratings-semester-table {
+    width: 100%;
+}
+
+.see-all-ratings-semester-table, .see-all-ratings-table, .see-all-ratings-table-student-gap, .see-all-ratings-table-body {
+    display: flex;
+}
+
+.see-all-ratings-table {
+    height: 100%;
+    width: 90%;
+    overflow-x: scroll;
+}
+
+.see-all-ratings-table-students-sidebar {
+    width: 10%;
+    transform: translateY(116px);
+}
+
+.see-all-ratings-table-students-sidebar, .see-all-ratings-table-month, .see-all-ratings-table-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.see-all-ratings-table-student-gap {
+    width: 99%;
+    height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.month-marker {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: #AF7;
+    letter-spacing: 20px;
+}
+
+.see-all-ratings-table-number-gap, .see-all-ratings-table-rating-gap {
+    height: 30px;
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.see-all-ratings-table-rating-gap {
+    border: 1px solid black;
+    width: 50px;
+    background-color: white;
+}
+
+.see-all-ratings-table-number-gap {
+    width: 52px;
+}
+
+.see-all-ratings-semester-marker {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    font-size: 40px;
+    color: #FA0;
+    letter-spacing: 30px;
+    text-transform: uppercase;
+}

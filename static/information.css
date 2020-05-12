@@ -1,0 +1,72 @@
+.content-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.teachers-table, .schedule-table-day {
+    display: flex;
+    flex-direction: column;
+    height: 20px;
+}
+
+.teachers-table, .schedule-table {
+    margin-bottom: 20px;
+}
+
+.teachers-table {
+    width: 40%;
+}
+
+.schedule-table-day {
+    width: 100%;
+}
+
+.schedule-table {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.table-marker {
+    margin-bottom: 30px;
+    margin-top: 20px;
+    text-align: center;
+    color: rgb(200, 150, 0);
+}
+
+.teachers-table-row, .schedule-table-row {
+    display: flex;
+}
+
+.teachers-table-name-gap {
+    width: 60%;
+}
+
+.teachers-table-subject-gap {
+    width: 40%;
+}
+
+.schedule-table-subject-gap {
+    width: 80%;
+}
+
+.schedule-table-cabinet-gap {
+    width: 20%;
+}
+
+.table-gap {
+    box-sizing: border-box;
+    height: 100%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.schedule-table-day-marker {
+    text-align: center;
+    color: rgb(0, 200, 0);
+    text-transform: uppercase;
+}

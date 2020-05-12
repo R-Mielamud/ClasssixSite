@@ -1,0 +1,59 @@
+.top-menu {
+    display: flex !important;
+    background-color: blue;
+    justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    transform: translateY(-70px);
+}
+
+.top-menu-element, .top-menu, .top-menu-button, .top-menu-header {
+    height: 60px;
+    display: block;
+}
+
+.top-menu-header {
+    font-size: 32px;
+    color: #7F7;
+    font-weight: 900;
+}
+
+.top-menu-button {
+    background-color: blue;
+    padding: 0 30px;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+    display: none;
+    border: 0 solid #000 !important;
+}
+
+.top-menu-button:not(.top-menu-registration-button, .top-menu-unregistration-button) {
+    border: 0 solid #000 !important;
+}
+
+.top-menu-to-main-button {
+    background-color: #00A;
+}
+
+.top-menu-select-theme-button, .top-menu-to-main-button, .top-menu-to-information-button {
+    display: block;
+}
+
+.top-menu-registration-button, .top-menu-unregistration-button, .top-menu-unsubscribe-button {
+    background-color: blue;
+    border: 3px solid #FFF !important;
+    padding: 0px 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 40px !important;
+}
+
+.top-menu-registration-button {
+    display: block;
+}
+
+.top-menu-unregistration-button, .top-menu-subscribe-button, .top-menu-unsubscribe-button {
+    display: none;
+}

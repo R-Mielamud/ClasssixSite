@@ -1,5 +1,6 @@
 */__pycache__/*
 */migrations/*
+*.pyc
 db.sqlite3
 celerybeat-schedule.bak
 celerybeat-schedule.dat
