@@ -1,0 +1,171 @@
+32237:C 14 May 18:48:02.762 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32237:C 14 May 18:48:02.770 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32237, just started
+32237:C 14 May 18:48:02.770 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32237:M 14 May 18:48:02.771 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32237:M 14 May 18:48:02.779 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32252:C 14 May 18:48:03.835 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32252:C 14 May 18:48:03.849 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32252, just started
+32252:C 14 May 18:48:03.850 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32252:M 14 May 18:48:03.851 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32252:M 14 May 18:48:03.851 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32280:C 14 May 18:48:06.459 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32280:C 14 May 18:48:06.459 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32280, just started
+32280:C 14 May 18:48:06.459 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32280:M 14 May 18:48:06.460 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32280:M 14 May 18:48:06.461 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32292:C 14 May 18:48:09.670 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32292:C 14 May 18:48:09.679 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32292, just started
+32292:C 14 May 18:48:09.679 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32292:M 14 May 18:48:09.680 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32292:M 14 May 18:48:09.681 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32402:C 14 May 18:49:45.775 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32402:C 14 May 18:49:45.783 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32402, just started
+32402:C 14 May 18:49:45.783 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32402:M 14 May 18:49:45.784 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32402:M 14 May 18:49:45.786 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32417:C 14 May 18:49:46.854 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32417:C 14 May 18:49:46.856 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32417, just started
+32417:C 14 May 18:49:46.856 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32417:M 14 May 18:49:46.857 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32417:M 14 May 18:49:46.859 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32439:C 14 May 18:49:49.201 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32439:C 14 May 18:49:49.211 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32439, just started
+32439:C 14 May 18:49:49.211 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32439:M 14 May 18:49:49.212 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32439:M 14 May 18:49:49.212 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32454:C 14 May 18:49:52.594 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32454:C 14 May 18:49:52.597 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32454, just started
+32454:C 14 May 18:49:52.597 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32454:M 14 May 18:49:52.598 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32454:M 14 May 18:49:52.599 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32685:C 14 May 19:04:25.706 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32685:C 14 May 19:04:25.710 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32685, just started
+32685:C 14 May 19:04:25.710 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32685:M 14 May 19:04:25.711 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32685:M 14 May 19:04:25.717 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32704:C 14 May 19:04:27.305 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32704:C 14 May 19:04:27.305 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32704, just started
+32704:C 14 May 19:04:27.305 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32704:M 14 May 19:04:27.306 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32704:M 14 May 19:04:27.306 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32705:C 14 May 19:04:29.320 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32705:C 14 May 19:04:29.321 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32705, just started
+32705:C 14 May 19:04:29.321 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32705:M 14 May 19:04:29.322 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32705:M 14 May 19:04:29.322 # Creating Server TCP listening socket *:6379: bind: Address already in use
+32707:C 14 May 19:04:33.186 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+32707:C 14 May 19:04:33.186 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=32707, just started
+32707:C 14 May 19:04:33.186 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+32707:M 14 May 19:04:33.187 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+32707:M 14 May 19:04:33.187 # Creating Server TCP listening socket *:6379: bind: Address already in use
+481:C 14 May 19:14:09.205 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+481:C 14 May 19:14:09.208 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=481, just started
+481:C 14 May 19:14:09.208 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+481:M 14 May 19:14:09.209 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+481:M 14 May 19:14:09.217 * Running mode=standalone, port=6379.
+481:M 14 May 19:14:09.217 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+481:M 14 May 19:14:09.217 # Server initialized
+481:M 14 May 19:14:09.217 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+481:M 14 May 19:14:09.217 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+481:M 14 May 19:14:09.218 * Ready to accept connections
+481:signal-handler (1589473244) Received SIGTERM scheduling shutdown...
+481:M 14 May 19:20:44.247 # User requested shutdown...
+481:M 14 May 19:20:44.247 * Saving the final RDB snapshot before exiting.
+481:M 14 May 19:20:44.252 * DB saved on disk
+481:M 14 May 19:20:44.252 # Redis is now ready to exit, bye bye...
+753:C 14 May 19:21:06.165 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+753:C 14 May 19:21:06.171 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=753, just started
+753:C 14 May 19:21:06.171 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+753:M 14 May 19:21:06.171 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+753:M 14 May 19:21:06.177 * Running mode=standalone, port=6379.
+753:M 14 May 19:21:06.177 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+753:M 14 May 19:21:06.178 # Server initialized
+753:M 14 May 19:21:06.178 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+753:M 14 May 19:21:06.178 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+753:M 14 May 19:21:06.178 * DB loaded from disk: 0.000 seconds
+753:M 14 May 19:21:06.178 * Ready to accept connections
+753:signal-handler (1589473442) Received SIGTERM scheduling shutdown...
+753:M 14 May 19:24:02.959 # User requested shutdown...
+753:M 14 May 19:24:02.959 * Saving the final RDB snapshot before exiting.
+753:M 14 May 19:24:02.964 * DB saved on disk
+753:M 14 May 19:24:02.964 # Redis is now ready to exit, bye bye...
+1194:C 14 May 19:24:24.166 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1194:C 14 May 19:24:24.171 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1194, just started
+1194:C 14 May 19:24:24.171 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1194:M 14 May 19:24:24.172 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1194:M 14 May 19:24:24.176 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1213:C 14 May 19:24:25.760 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1213:C 14 May 19:24:25.760 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1213, just started
+1213:C 14 May 19:24:25.760 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1213:M 14 May 19:24:25.761 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1213:M 14 May 19:24:25.761 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1216:C 14 May 19:24:28.567 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1216:C 14 May 19:24:28.567 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1216, just started
+1216:C 14 May 19:24:28.567 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1216:M 14 May 19:24:28.568 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1216:M 14 May 19:24:28.568 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1218:C 14 May 19:24:31.587 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1218:C 14 May 19:24:31.588 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1218, just started
+1218:C 14 May 19:24:31.588 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1218:M 14 May 19:24:31.588 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1218:M 14 May 19:24:31.589 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1522:C 14 May 19:33:15.717 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1522:C 14 May 19:33:15.720 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1522, just started
+1522:C 14 May 19:33:15.720 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1522:M 14 May 19:33:15.721 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1522:M 14 May 19:33:15.723 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1541:C 14 May 19:33:17.321 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1541:C 14 May 19:33:17.321 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1541, just started
+1541:C 14 May 19:33:17.321 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1541:M 14 May 19:33:17.322 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1541:M 14 May 19:33:17.322 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1542:C 14 May 19:33:19.336 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1542:C 14 May 19:33:19.336 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1542, just started
+1542:C 14 May 19:33:19.336 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1542:M 14 May 19:33:19.337 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1542:M 14 May 19:33:19.337 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1543:C 14 May 19:33:22.355 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1543:C 14 May 19:33:22.355 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1543, just started
+1543:C 14 May 19:33:22.355 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1543:M 14 May 19:33:22.356 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1543:M 14 May 19:33:22.356 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1665:C 14 May 19:36:32.487 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1665:C 14 May 19:36:32.489 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1665, just started
+1665:C 14 May 19:36:32.490 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1665:M 14 May 19:36:32.490 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1665:M 14 May 19:36:32.496 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1684:C 14 May 19:36:34.079 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1684:C 14 May 19:36:34.079 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1684, just started
+1684:C 14 May 19:36:34.079 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1684:M 14 May 19:36:34.080 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1684:M 14 May 19:36:34.080 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1686:C 14 May 19:36:36.251 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1686:C 14 May 19:36:36.251 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1686, just started
+1686:C 14 May 19:36:36.251 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1686:M 14 May 19:36:36.252 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1686:M 14 May 19:36:36.252 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1687:C 14 May 19:36:39.333 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1687:C 14 May 19:36:39.333 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1687, just started
+1687:C 14 May 19:36:39.333 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1687:M 14 May 19:36:39.334 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1687:M 14 May 19:36:39.334 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1819:C 14 May 19:43:09.246 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1819:C 14 May 19:43:09.253 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1819, just started
+1819:C 14 May 19:43:09.254 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1819:M 14 May 19:43:09.254 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1819:M 14 May 19:43:09.260 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1834:C 14 May 19:43:10.374 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1834:C 14 May 19:43:10.379 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1834, just started
+1834:C 14 May 19:43:10.379 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1834:M 14 May 19:43:10.380 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1834:M 14 May 19:43:10.383 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1851:C 14 May 19:43:12.549 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1851:C 14 May 19:43:12.549 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1851, just started
+1851:C 14 May 19:43:12.549 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1851:M 14 May 19:43:12.550 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1851:M 14 May 19:43:12.551 # Creating Server TCP listening socket *:6379: bind: Address already in use
+1853:C 14 May 19:43:15.583 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1853:C 14 May 19:43:15.583 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=1853, just started
+1853:C 14 May 19:43:15.583 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+1853:M 14 May 19:43:15.584 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+1853:M 14 May 19:43:15.584 # Creating Server TCP listening socket *:6379: bind: Address already in use
