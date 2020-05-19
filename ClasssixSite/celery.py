@@ -2,10 +2,11 @@ from __future__ import absolute_import
 import os
 from celery import Celery
 from django.conf import settings
+from . import settings as proj_settings
 from celery.task import periodic_task, task
 from celery.schedules import crontab
 from diary import constants
-# from django.core import mail
+from django.core import mail
 import datetime
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ClasssixSite.settings")
@@ -18,19 +19,19 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 def debug_task(self):
     print("Request: {0!r}".format(self.request))
 
-# @task
-# def send_emails(data):
-#     from main.models import User
+@task
+def send_emails(data):
+    from main.models import User
 
-#     emails = User.objects.filter(is_subscriber=True).values_list("email", flat=True)
+    emails = User.objects.filter(is_subscriber=True).values_list("email", flat=True)
 
-#     mail.send_mail(
-#         data["subject"],
-#         data["message"],
-#         data["from"],
-#         emails,
-#         fail_silently=False
-#     )
+    mail.send_mail(
+        data["subject"],
+        data["message"],
+        data["from"],
+        emails,
+        fail_silently=(not proj_settings.DEBUG)
+    )
 
 @task
 def work_with_POST(inputs, showing_dates, subject):

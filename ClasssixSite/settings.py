@@ -25,7 +25,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 20000
 SECRET_KEY = 'i(!_rpn2!0du5p=dap$rq&www^o!l$rk_#4*ppbwff4o4cf2&w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DJ_DEBUG") or True
 
 ALLOWED_HOSTS = ["185.233.118.78", "rl-classfive.com.ua", "www.rl-classfive.com.ua"]
 
@@ -173,3 +173,17 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 CELERY_TIMEZONE = 'Africa/Nairobi'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "localhost"
+
+EMAIL_PORT = 25
+
+EMAIL_HOST_USER = ""
+
+EMAIL_HOST_PASSWORD = ""
+
+EMAIL_USE_TLS = False
+
+DEFAULT_FROM_EMAIL = "admin@rl-classfive.com.ua"

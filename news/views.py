@@ -3,7 +3,7 @@ from django.views.generic import View
 from news.models import Article
 from main.models import User
 from django.shortcuts import redirect
-# from ClasssixSite.celery import send_emails
+from ClasssixSite.celery import send_emails
 
 class DeleteArticleView(View):
     def get(self, request, *args, **kwargs):
@@ -63,8 +63,8 @@ class AddArticleView(RegistrationFormView):
     success_url = "/add_article/"
     template_name = "add_article.html"
 
-    # def _send_emails(self, data):
-    #     send_emails(data)
+    def _send_emails(self, data):
+        send_emails(data)
 
     def post(self, request, *args, **kwargs):
         if not request.session.get("registered"):
@@ -86,13 +86,13 @@ class AddArticleView(RegistrationFormView):
                 video=video
             )
 
-            # email_data = {
-            #     "subject": "Новина!",
-            #     "message": "Хтось написав новину! Переходь сюди: 127.0.0.1:8000",
-            #     "from": "2m.roman2@gmail.com"
-            # }
+            email_data = {
+                "subject": "Новина!",
+                "message": "Хтось написав новину! Переходь сюди: http://rl-classfive.com.ua",
+                "from": "admin@rl-classfive.com.ua"
+            }
 
-            # self._send_emails(email_data)
+            self._send_emails(email_data)
 
         return redirect("/")
 
