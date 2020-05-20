@@ -23,7 +23,8 @@
         <div class="semester-ratings-table">
             <div class="subjects-sidebar">
                 {% for sub in subjects %}
-                    <div class="subject-gap"><span>{{ sub.name }}</span></div>
+                    <div class="subject-gap" id="{{ sub.name }}"><span>{{ sub.name }}</span></div>
+                    <script>alert(document.getElementById("{{ sub.name }}").clientHeight)</script>
                 {% endfor %}
             </div>
 
@@ -39,6 +40,7 @@
 
                                     {% for row in subjects_len|times %}
                                         <div class="rating-gap" id="gap-{{ month.number_in_year }}-{{ day_number }}-{{ row }}"></div>
+                                        <script>alert(document.getElementById("gap-{{ month.number_in_year }}-{{ day_number }}-{{ row }}").clientHeight)</script>
                                     {% endfor %}
                                 </div>
                             {% endfor %}
