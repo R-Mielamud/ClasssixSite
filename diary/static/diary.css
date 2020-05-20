@@ -16,7 +16,7 @@
 
 .subject-gap {
     width: 99%;
-    height: 30px;
+    height: 30px !important;
     border: 1px solid black;
     text-align: center;
     font-size: 12px;

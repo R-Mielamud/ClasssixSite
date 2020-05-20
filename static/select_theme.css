@@ -1,7 +1,6 @@
 .select-theme-form {
     width: 200px;
-    margin-left: 600px;
-    margin-top: 100px;
+    margin: 100px auto;
 }
 
 .select-theme-input {
