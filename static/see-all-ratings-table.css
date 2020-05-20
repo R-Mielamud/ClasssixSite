@@ -6,6 +6,10 @@
     display: flex;
 }
 
+.see-all-ratings-semester-table {
+    height: min-content !important;
+}
+
 .see-all-ratings-table {
     height: 100%;
     width: 90%;

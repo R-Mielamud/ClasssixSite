@@ -1,0 +1,25 @@
+.three-dots-vertical {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: blue;
+    position: absolute;
+    right: 100px;
+    top: 60px;
+    padding: 0 10px 10px;
+}
+
+.three-dots-menu {
+    background-color: blue;
+    color: white;
+    padding: 0 50px;
+}
+
+.three-dots-vertical * {
+    width: 100%;
+}
+
+.three-dots-menu:hover .three-dots-vertical {
+    display: block;
+}
