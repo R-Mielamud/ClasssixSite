@@ -75,7 +75,7 @@ class GetUserRatingsViewSet(ApiKeyRequiredModelViewSet):
     serializer_class = RatingSetSerializer
 
     def get_queryset(self):
-        username = self.request.GET.get("username")
+        username = self.request.query_params.get("username")
         user = User.objects.filter(username=username)
 
         if user:
