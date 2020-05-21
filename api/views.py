@@ -80,6 +80,6 @@ class GetUserRatingsViewSet(ApiKeyRequiredModelViewSet):
 
         if user:
             user = user.first()
-            return super().get_queryset_with_checking(user.ratings, [])
+            return super().get_queryset_with_checking(user.ratings.all(), [])
         else:
             return []
