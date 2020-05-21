@@ -93,6 +93,7 @@
             var subject = "{{ rating.subject.index }}";
             var gapId = "gap-" + date + "-" + subject;
             var gap = document.getElementById(gapId);
+            gap.innerHTML = "";
 
             if ("{{ rating.rating1 }}" !== "None") {
                 let value = "{{ rating.rating1.value }}";

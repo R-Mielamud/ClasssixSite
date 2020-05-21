@@ -189,6 +189,7 @@
         <script async>
             var date = "{{ rating.month }}-{{ rating.day }}";
             var student = "{{ rating.students.first.index }}";
+            gap.innerHTML = "";
 
             if ("{{ rating.rating1 }}" !== "None") {
                 let value = "{{ rating.rating1.value }}";
@@ -196,7 +197,7 @@
                 let gapId = "gap-" + date + "-" + student;
                 let gap = document.getElementById(gapId);
                 let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
-                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
             }
             
             if ("{{ rating.rating2 }}" !== "None") {
