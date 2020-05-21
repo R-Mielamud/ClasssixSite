@@ -126,7 +126,7 @@
                 const isMobile = isMobileRegex.test(navigator.userAgent);
 
                 if (isMobile) {
-                    const canDownload = confirm("На вашому екрані деякий текст може відображатися дрібним шрифтом, але ви можете завантажити додаток для Android. Завантажити?");
+                    const canDownload = confirm("На вашому екрані деякий контент може відображатися нечітко, але ви можете завантажити додаток 'Class Six Student' для Android. Завантажити?");
                     
                     if (canDownload) {
                         window.location.href = "{% static 'classsix-student.apk' %}";
@@ -136,7 +136,6 @@
 
             <script src="{% static 'buttons.js' %}" async></script>
             <script src="{% static 'registration_form.js' %}" async></script>
-            <script src="{% static 'mobile_alert.js' %}" async></script>
             {% block additional_scripts %}{% endblock %}
         </footer>
     </body>
