@@ -189,7 +189,6 @@
         <script async>
             var date = "{{ rating.month }}-{{ rating.day }}";
             var student = "{{ rating.students.first.index }}";
-            gap.innerHTML = "";
 
             if ("{{ rating.rating1 }}" !== "None") {
                 let value = "{{ rating.rating1.value }}";
