@@ -28,7 +28,7 @@
         
         <div class="editratings-form-main-content">
             <div class="editratings-form-table">
-                {% cache 604800 students_sidebar %}
+                {% cache 604800 editratings_students_sidebar %}
                     <div class="editratings-form-students-sidebar">
                         {% for student in students %}
                             <div class="editratings-form-student-gap"><span>{{ student.real_full_name }}</span></div>
@@ -43,19 +43,19 @@
                         {% endfor %}
                     </div>
 
-                    {% cache 2592000 table_body %}
+                    {% cache 2592000 editratings_table_body %}
                         <div class="editratings-form-table-body">
                             {% for student in students %}
                                 <div class="editratings-form-table-row">
                                     {% for d in showing_dates %}
-                                        <input type="button" class="editratings-form-table-gap" id="rating-gap-{{ student.pk }}-for-date-{{ d }}">
+                                        <input type="button" class="editratings-form-table-gap" id="rating-gap-{{ student.index }}-for-date-{{ d }}">
                                         
-                                        <div class="set-rating-mini-form" id="set-rating-mini-form-{{ student.pk }}-for-date-{{ d }}">
+                                        <div class="set-rating-mini-form" id="set-rating-mini-form-{{ student.index }}-for-date-{{ d }}">
                                             <div class="set-rating-mini-form-rating-inputs">
                                                 {% for i in 4|times %}
                                                     <input class="set-rating-mini-form-rating-input"
-                                                        id="set-rating-mini-form-rating-input-{{ i }}-{{ student.pk }}-for-date-{{ d }}"
-                                                        name="rating-input-{{ i }}-{{ student.pk }}-date-{{ d }}">
+                                                        id="set-rating-mini-form-rating-input-{{ i }}-{{ student.index }}-for-date-{{ d }}"
+                                                        name="rating-input-{{ i }}-{{ student.index }}-date-{{ d }}">
                                                 {% endfor %}
                                             </div>
                                 
@@ -63,8 +63,8 @@
                                                 {% for i in 4|times %}
                                                     <select class="set-rating-mini-form-status-input" 
                                                         size="1"
-                                                        id="set-rating-mini-form-status-input-{{ i }}-{{ student.pk }}-for-date-{{ d }}"
-                                                        name="status-input-{{ i }}-{{ student.pk }}-date-{{ d }}">
+                                                        id="set-rating-mini-form-status-input-{{ i }}-{{ student.index }}-for-date-{{ d }}"
+                                                        name="status-input-{{ i }}-{{ student.index }}-date-{{ d }}">
                                                             {% for type in rating_statuses %}
                                                                 <option>{{ type }}</option>
                                                             {% endfor %}
@@ -72,7 +72,7 @@
                                                 {% endfor %}
                                             </div>
 
-                                            <input type="button" class="set-rating-mini-form-button" id="set-rating-mini-form-button-{{ student.pk }}-for-date-{{ d }}" value="OK">
+                                            <input type="button" class="set-rating-mini-form-button" id="set-rating-mini-form-button-{{ student.index }}-for-date-{{ d }}" value="OK">
                                         </div>
                                     {% endfor %}
                                 </div>

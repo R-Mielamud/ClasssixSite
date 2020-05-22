@@ -2,6 +2,8 @@ from main.forms import RegistrationForm
 from django.views.generic import FormView, base
 from main.models import User
 from news.models import Article
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 class RegistrationFormView(FormView):
     form_class = RegistrationForm
@@ -9,6 +11,10 @@ class RegistrationFormView(FormView):
     def get(self, request, *args, **kwargs):
         if (request.GET.get("unregister") == "1") and request.session.get("registered"):
             request.session.pop("registered")
+            students_sidebar = make_template_fragment_key("editratings_students_sidebar")
+            table = make_template_fragment_key("editratings_table_body")
+            cache.delete(students_sidebar)
+            cache.delete(table)
 
         return super().get(request, *args, **kwargs)
 

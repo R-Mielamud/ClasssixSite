@@ -34,7 +34,7 @@ def send_emails(data):
     )
 
 @task
-def work_with_POST(inputs, showing_dates, subject):
+def work_with_POST(inputs, showing_dates, subject, is_test):
     from diary.models import Rating, RatingSet, Subject
     from main.models import User
 
@@ -47,13 +47,13 @@ def work_with_POST(inputs, showing_dates, subject):
     year = str(datetime.datetime.now()).split("-")[0]
     dates = showing_dates or [format_date_component(day) + ".09." + year for day in range(1, 31, 1)]
 
-    for student in User.objects.filter(is_teacher=False):
+    for student in User.objects.filter(is_teacher=False, is_test=is_test):
         for date in dates:
             ratings = list()
             
             for i in range(1, 5, 1):
-                rating = inputs.get("rating-input-{}-{}-date-{}".format(i, student.pk, date))
-                stauts = inputs.get("status-input-{}-{}-date-{}".format(i, student.pk, date))
+                rating = inputs.get("rating-input-{}-{}-date-{}".format(i, student.index, date))
+                stauts = inputs.get("status-input-{}-{}-date-{}".format(i, student.index, date))
 
                 if rating:
                     rating = Rating(value=rating, status=stauts)

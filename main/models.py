@@ -5,6 +5,7 @@ class User(Model):
     real_full_name = CharField(default="", max_length=100)
     middle_rating = DecimalField(null=True, blank=True, max_digits=5, decimal_places=2)
     is_teacher = BooleanField(default=False)
+    is_test = BooleanField(default=False)
     username = CharField(default="", max_length=100)
     password = CharField(default="", max_length=100)
     email = EmailField(null=True, blank=True)

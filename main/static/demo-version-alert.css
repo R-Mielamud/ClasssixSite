@@ -1,0 +1,41 @@
+.demo-version-alert {
+    width: 150px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #5F5D;
+    position: fixed;
+    top: 80px;
+    left: 10px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+.demo-version-alert:hover {
+    background-color: #AFAD;
+}
+
+.demo-version-message {
+    opacity: 0;
+    width: 200px;
+    position: fixed;
+    top: 120px;
+    left: 80px;
+    background-color: #5A5D;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    display: none;
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+.demo-version-alert:hover .demo-version-message {
+    display: flex;
+    opacity: 1;
+}

@@ -22,19 +22,22 @@ class EditratingsView(RegistrationFormView):
         user = User.objects.filter(username=registered).first()
 
         show_ratings_by = self.request.session.get("ratings_subject")
+
         o_show_ratings_by = Subject.objects.filter(name=show_ratings_by).first()
 
-        context["showing_dates"] = self.request.session.get("showing_dates") or [str(self._format_date_component(day)) + ".09." + year for day in range(1, 31, 1)]
-        context["max_date"] = o_month.days if o_month else 30
-        context["subjects"] = Subject.objects.all().order_by("index")
-        context["subject_name"] = self.request.session.get("subject") or context["subjects"][0].name
-        context["students"] = User.objects.filter(is_teacher=False).order_by("index")
-        context["students_len"] = len(context["students"])
-        context["months"] = Month.objects.all().order_by("number_in_year")
-        context["month_name"] = o_month.name if o_month else context["months"][0].name
-        context["rating_statuses"] = [status[0] for status in constants.RATING_TYPES]
-        context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
-        context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")
+        if registered and user.is_teacher:
+            context["showing_dates"] = self.request.session.get("showing_dates") or [str(self._format_date_component(day)) + ".09." + year for day in range(1, 31, 1)]
+            context["max_date"] = o_month.days if o_month else 30
+            context["subjects"] = Subject.objects.all().order_by("index")
+            context["subject_name"] = self.request.session.get("subject") or context["subjects"][0].name
+            context["students"] = User.objects.filter(is_teacher=False, is_test=user.is_test).order_by("index")
+            context["students_len"] = len(context["students"])
+            context["months"] = Month.objects.all().order_by("number_in_year")
+            context["month_name"] = o_month.name if o_month else context["months"][0].name
+            context["rating_statuses"] = [status[0] for status in constants.RATING_TYPES]
+            context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
+            context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")
+
         context["canRedirect"] = "n" if registered and user.is_teacher else "y"
 
         if o_show_ratings_by:
@@ -48,8 +51,8 @@ class EditratingsView(RegistrationFormView):
         else:
             return "0{}".format(component)
         
-    def _work_with_POST(self, inputs, showing_dates, subject):
-        work_with_POST.delay(inputs, showing_dates, subject)
+    def _work_with_POST(self, inputs, showing_dates, subject, is_test):
+        work_with_POST.delay(inputs, showing_dates, subject, is_test)
 
     def post(self, request, *args, **kwargs):
         if not request.session.get("registered"):
@@ -60,27 +63,28 @@ class EditratingsView(RegistrationFormView):
             if not user.is_teacher:
                 return redirect("/")
 
-        if request.POST.get("config"):
-            month = request.POST.get("month_name_input")
-            o_month = Month.objects.get(name=month)
+            if request.POST.get("config"):
+                month = request.POST.get("month_name_input")
 
-            year = str(datetime.datetime.now()).split("-")[0]
+                o_month = Month.objects.get(name=month)
 
-            month_num = o_month.number_in_year + 8 if o_month.number_in_year < 5 else o_month.number_in_year - 4
+                year = str(datetime.datetime.now()).split("-")[0]
 
-            formatted_month_num = self._format_date_component(month_num)
+                month_num = o_month.number_in_year + 8 if o_month.number_in_year < 5 else o_month.number_in_year - 4
 
-            request.session["showing_dates"] = [
-                "{}.{}.{}".format(self._format_date_component(day), formatted_month_num, year)
-                for day in range(1, o_month.days + 1, 1)
-            ]
+                formatted_month_num = self._format_date_component(month_num)
 
-            request.session["month_name"] = month
-            request.session["subject"] = request.POST.get("subject_name_input")
-        elif request.POST.get("save_ratings"):
-            inputs = {key: request.POST[key] for key in request.POST if key[7:12:1] == "input"}
-            self._work_with_POST(inputs, request.session.get("showing_dates"), request.session.get("subject"))
-        elif request.POST.get("show-subject"):
-            request.session["ratings_subject"] = request.POST.get("showing-subject")
+                request.session["showing_dates"] = [
+                    "{}.{}.{}".format(self._format_date_component(day), formatted_month_num, year)
+                    for day in range(1, o_month.days + 1, 1)
+                ]
+
+                request.session["month_name"] = month
+                request.session["subject"] = request.POST.get("subject_name_input")
+            elif request.POST.get("save_ratings"):
+                inputs = {key: request.POST[key] for key in request.POST if key[7:12:1] == "input"}
+                self._work_with_POST(inputs, request.session.get("showing_dates"), request.session.get("subject"), user.is_test)
+            elif request.POST.get("show-subject"):
+                request.session["ratings_subject"] = request.POST.get("showing-subject")
         
         return super().post(request, *args, **kwargs)

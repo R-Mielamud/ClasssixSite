@@ -3,6 +3,7 @@
 
 {% block additional_sheets %}
     <link rel="stylesheet" href="{% static 'posts.css' %}">
+    <link rel="stylesheet" href="{% static 'demo-version-alert.css' %}">
 {% endblock %}
 
 {% block main_content %}
@@ -37,6 +38,24 @@
             {% endif %}
         </div>
     {% endfor %}
+
+    <div class="demo-version-alert">
+        <p>Демо - версія</p>
+
+        <div class="demo-version-message">
+            <p>Вчитель:</p>
+            <p>Логін - tst_teacher</p>
+            <p>Пароль - tst_teacher</p>
+            <br>
+            <p>Студент 1:</p>
+            <p>Логін - tst_student1</p>
+            <p>Пароль - tst_student1</p>
+            <br>
+            <p>Студент 2:</p>
+            <p>Логін - tst_student2</p>
+            <p>Пароль - tst_student2</p>
+        </div>
+    </div>
 {% endblock %}
 
 {% block additional_scripts %}
