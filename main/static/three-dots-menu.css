@@ -19,7 +19,3 @@
 .three-dots-vertical * {
     width: 100%;
 }
-
-.three-dots-menu:hover .three-dots-vertical {
-    display: block;
-}
