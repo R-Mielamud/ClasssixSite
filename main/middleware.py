@@ -11,7 +11,7 @@ class AntispamMiddleware(MiddlewareMixin):
 
         if request.session.get("request_time"):
             if ((request.session.get("request_time") - time()) <= 5 
-                and request.session.get("request_count") > 12
+                and request.session.get("request_count") > 15
                 and request.path != "/stop_spam/" 
                 and request.path.split("/")[1] != "/static/"):
                     request.session["request_count"] = 1
