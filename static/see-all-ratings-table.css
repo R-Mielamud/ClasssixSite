@@ -18,7 +18,7 @@
 
 .see-all-ratings-table-students-sidebar {
     width: 10%;
-    transform: translateY(116px);
+    transform: translateY(107px);
 }
 
 .see-all-ratings-table-students-sidebar, .see-all-ratings-table-month, .see-all-ratings-table-column {
@@ -75,4 +75,9 @@
     color: #FA0;
     letter-spacing: 30px;
     text-transform: uppercase;
+}
+
+.see-all-ratings-semester-marker, .month-marker {
+    text-shadow: 1px 1px 1px black,
+        -3px -3px 1px black;
 }

@@ -25,13 +25,14 @@ def send_emails(data):
 
     emails = User.objects.filter(is_subscriber=True).values_list("email", flat=True)
 
-    mail.send_mail(
-        data["subject"],
-        data["message"],
-        data["from"],
-        emails,
-        fail_silently=(not proj_settings.DEBUG)
-    )
+    if not proj_settings.DEBUG:
+        mail.send_mail(
+            data["subject"],
+            data["message"],
+            data["from"],
+            emails,
+            fail_silently=(not proj_settings.DEBUG)
+        )
 
 @task
 def work_with_POST(inputs, showing_dates, subject, is_test):

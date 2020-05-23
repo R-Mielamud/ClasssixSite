@@ -1,0 +1,16 @@
+{% load static %}
+
+<html lang="ua">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Помилка {{ status }}</title>
+        <link rel="stylesheet" href="{% static 'error.css' %}">
+    </head>
+
+    <body>
+        <h1>Oops! Помилка!</h1>
+        <span class="err-status">{{ status }}</span>
+        <h2><a href="javascript:void(window.location.href = '/')">Назад</a></h2>
+    </body>
+</html>

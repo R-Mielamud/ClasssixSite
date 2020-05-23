@@ -26,16 +26,25 @@
     <body>
         <header>
             <div class="top-menu">
-                <span class="top-menu-element top-menu-header">Наш 6 клас</span>
-                <img src="{% static 'logo_top_menu.png' %}" class="top-menu-element">
-                <button id="toMainButton" class="top-menu-button top-menu-element top-menu-to-main-button">Головна</button>
-                <button id="toDiaryButton" class="top-menu-button top-menu-element">Щоденник</button>
-                <button id="editRatingsButton" class="top-menu-button top-menu-element">Редагувати оцінки</button>
-                <button id="addArticleButton" class="top-menu-button top-menu-element">Додати статтю</button>
-                <button id="registrationButton" class="top-menu-button top-menu-element top-menu-registration-button">Вхід</button>
-                <button id="unregistrationButton" class="top-menu-button top-menu-element top-menu-unregistration-button">Вихід</button>
+                <span class="top-menu-element top-menu-header width-etalon" id="top-menu-header"><span>Наш 6 клас</span></span>
+                
+                <script>
+                    const header = document.getElementById("top-menu-header");
 
-                <div class="three-dots-menu top-menu-element">
+                    if (screen.width < 600) {
+                        header.style.display = "none";
+                    }
+                </script>
+
+                <img src="{% static 'logo_top_menu.png' %}" class="top-menu-element width-etalon">
+                <button id="toMainButton" class="top-menu-button top-menu-element top-menu-to-main-button width-etalon">Головна</button>
+                <button id="toDiaryButton" class="top-menu-button top-menu-element movable">Щоденник</button>
+                <button id="editRatingsButton" class="top-menu-button top-menu-element movable">Редагувати оцінки</button>
+                <button id="addArticleButton" class="top-menu-button top-menu-element movable">Додати статтю</button>
+                <button id="registrationButton" class="top-menu-button top-menu-element top-menu-registration-button movable">Вхід</button>
+                <button id="unregistrationButton" class="top-menu-button top-menu-element top-menu-unregistration-button movable">Вихід</button>
+
+                <div class="three-dots-menu top-menu-element width-etalon">
                     <h1>...</h1>
 
                     <div class="three-dots-vertical">
@@ -143,6 +152,7 @@
 
             <script src="{% static 'buttons.js' %}" async></script>
             <script src="{% static 'registration_form.js' %}" async></script>
+            <script src="{% static 'adaptive_three_dots.js' %}" async></script>
             {% block additional_scripts %}{% endblock %}
         </footer>
     </body>

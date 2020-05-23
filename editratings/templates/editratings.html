@@ -55,7 +55,10 @@
                                                 {% for i in 4|times %}
                                                     <input class="set-rating-mini-form-rating-input"
                                                         id="set-rating-mini-form-rating-input-{{ i }}-{{ student.index }}-for-date-{{ d }}"
-                                                        name="rating-input-{{ i }}-{{ student.index }}-date-{{ d }}">
+                                                        name="rating-input-{{ i }}-{{ student.index }}-date-{{ d }}"
+                                                        onchange="this.value = Math.floor(this.value);
+                                                                  this.value = Math.max(this.value, 1);
+                                                                  this.value = Math.min(this.value, 12);">
                                                 {% endfor %}
                                             </div>
                                 

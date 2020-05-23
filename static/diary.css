@@ -12,7 +12,7 @@
 
 .subjects-sidebar {
     width: 10%;
-    transform: translateY(116px);
+    transform: translateY(107px);
 }
 
 .subject-gap {
@@ -93,4 +93,14 @@
     letter-spacing: 4px;
     text-align: center;
     width: 100%;
+}
+
+.semester-marker, .ratings-table-month-marker {
+    text-shadow: 1px 1px 1px black,
+        -3px -3px 1px black;
+}
+
+.student-middle-rating {
+    text-shadow: 1px 1px 1px black,
+        -2px -2px 1px black;
 }

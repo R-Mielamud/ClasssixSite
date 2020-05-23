@@ -1,12 +1,6 @@
 * {
-    font-family: cursive;
+    font-family: Consolas, Arial, Helvetica, sans-serif;
     margin: 0;
-}
-
-@media screen and (max-width: 900px) {
-    * {
-        font-family: -apple-system Consolas sans-serif;
-    }
 }
 
 *::selection {

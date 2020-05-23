@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "api",
     "theme_select",
     "information",
+    "errors",
     "rest_framework"
 ]
 
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     "main.middleware.AntispamMiddleware",
+    "main.middleware.ErrorMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 

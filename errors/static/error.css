@@ -1,0 +1,13 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Consolas Arial, Helvetica, sans-serif;
+}
+
+.err-status {
+    font-size: 128px;
+    color: #FB8;
+    text-shadow: 5px 5px 10px #F00;
+}

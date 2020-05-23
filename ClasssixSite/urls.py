@@ -27,7 +27,8 @@ urlpatterns = [
     path("", include("news.urls")),
     path("", include("subscribe.urls")),
     path("", include("theme_select.urls")),
-    path("", include("information.urls"))
+    path("", include("information.urls")),
+    path("", include("errors.urls"))
 ]
 
 if settings.DEBUG:
