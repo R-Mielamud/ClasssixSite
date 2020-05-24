@@ -6,8 +6,15 @@ body {
     font-family: Consolas Arial, Helvetica, sans-serif;
 }
 
-.err-status {
-    font-size: 128px;
+.err-status, .err-message {
     color: #FB8;
     text-shadow: 5px 5px 10px #F00;
+}
+
+.err-status {
+    font-size: 128;
+}
+
+.err-message {
+    font-size: 56;
 }

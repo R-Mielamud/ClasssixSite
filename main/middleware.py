@@ -11,7 +11,7 @@ class AntispamMiddleware(MiddlewareMixin):
 
         if request.session.get("request_time"):
             if ((request.session.get("request_time") - time()) <= 5 
-                and request.session.get("request_count") > 15
+                and request.session.get("request_count") > 20
                 and request.path != "/stop_spam/" 
                 and request.path.split("/")[1] != "/static/"):
                     request.session["request_count"] = 1
@@ -32,6 +32,6 @@ class ErrorMiddleware(MiddlewareMixin):
 
     def process_response(self, request, response):
         if response.status_code >= 400:
-            return redirect("/error/{}/".format(response.status_code))
+            return redirect("/error/{}/{}/".format(response.status_code, response.reason_phrase))
 
         return response

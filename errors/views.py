@@ -6,4 +6,5 @@ class ErrorView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["status"] = self.kwargs["status"][:3]
+        context["message"] = self.kwargs["phrase"][:len(self.kwargs["phrase"]) - 1]
         return context
