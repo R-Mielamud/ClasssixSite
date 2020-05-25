@@ -8,6 +8,7 @@ let unsubscribeButton = document.getElementById("unsubscribeButton");
 let subscribeButton = document.getElementById("subscribeButton");
 let selectThemeButton = document.getElementById("selectThemeButton");
 let toInformationButton = document.getElementById("toInformationButton");
+let toWikipediaButton = document.getElementById("toWikipediaButton");
 
 registrationButton.onclick = () => registrationFormBg.style.display = "flex";
 registrationFormReset.onclick = () => registrationFormBg.style.display = "none";
@@ -20,6 +21,7 @@ subscribeButton.onclick = () => window.location.href = "/subscribe/";
 unsubscribeButton.onclick = () => window.location.href = "/unsubscribe/";
 selectThemeButton.onclick = () => window.location.href = "/select_theme/";
 toInformationButton.onclick = () => window.location.href = "/information/";
+toWikipediaButton.onclick = () => window.location.href = "/wikipedia/";
 
 if (showedButton) {
     registrationButton.style.display = "none";

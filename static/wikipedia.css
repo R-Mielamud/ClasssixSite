@@ -1,0 +1,41 @@
+.wikipedia {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #FFFA;
+    padding: 20px;
+    border-radius: 15px;
+    border: 15px solid #555A;
+    box-shadow: 10px 10px 20px 20px #DDD,
+        -10px -10px 20px 20px #DDD;
+}
+
+* {
+    text-align: center;
+}
+
+.wiki-h1-header, .wiki-h2-header, .wiki-h3-header {
+    margin-top: 20px;
+}
+
+.wiki-h1-header {
+    color: #0F0;
+    text-shadow: -2px -2px 2px #000, 1px 1px 0 #000;
+}
+
+.wiki-h2-header {
+    color: yellow;
+    text-shadow: -1.5px -1.5px 1.5px #000, 1px 1px 0 #000;
+}
+
+.wiki-h3-header {
+    color: yellowgreen;
+    text-shadow: -1px -1px 1px #000;
+}
+
+#toWikipediaButton {
+    background-color: #00A;
+}
+
+#toMainButton {
+    background-color: blue;
+}

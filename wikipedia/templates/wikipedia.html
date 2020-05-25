@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block additional_sheets %}
+    <link rel="stylesheet" href="{% static 'wikipedia.css' %}">
+{% endblock %}
+
+{% block main_content %}
+    <div class="wikipedia">
+        <img src="{% static 'logo_top_menu.png' %}">
+        <h1 class="wiki-h1-header">Документація Class Six Site</h1>
+
+        <h2 class="wiki-h2-header">Для всіх</h2>
+
+        <h3 class="wiki-h3-header">Головна</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In incidunt aliquid nostrum est libero quisquam pariatur eligendi dicta tempora, quod reprehenderit molestiae ullam unde voluptate cumque assumenda fugiat natus placeat.</p>
+
+        <h3 class="wiki-h3-header">Додати статтю</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In incidunt aliquid nostrum est libero quisquam pariatur eligendi dicta tempora, quod reprehenderit molestiae ullam unde voluptate cumque assumenda fugiat natus placeat.</p>
+
+        <h3 class="wiki-h3-header">Додати статтю (Редагування)</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In incidunt aliquid nostrum est libero quisquam pariatur eligendi dicta tempora, quod reprehenderit molestiae ullam unde voluptate cumque assumenda fugiat natus placeat.</p>
+
+        <h3 class="wiki-h3-header">Інформація</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In incidunt aliquid nostrum est libero quisquam pariatur eligendi dicta tempora, quod reprehenderit molestiae ullam unde voluptate cumque assumenda fugiat natus placeat.</p>
+
+        <h3 class="wiki-h3-header">Підписатися на новини</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In incidunt aliquid nostrum est libero quisquam pariatur eligendi dicta tempora, quod reprehenderit molestiae ullam unde voluptate cumque assumenda fugiat natus placeat.</p>
+
+        <h2 class="wiki-h2-header">Для учня</h2> 
+
+        <h3 class="wiki-h3-header">Щоденник</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In incidunt aliquid nostrum est libero quisquam pariatur eligendi dicta tempora, quod reprehenderit molestiae ullam unde voluptate cumque assumenda fugiat natus placeat.</p>
+
+        <h2 class="wiki-h2-header">Для вчителя</h2>
+
+        <h3 class="wiki-h3-header">Редагування оцінок</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In incidunt aliquid nostrum est libero quisquam pariatur eligendi dicta tempora, quod reprehenderit molestiae ullam unde voluptate cumque assumenda fugiat natus placeat.</p>
+    </div>
+{% endblock %}

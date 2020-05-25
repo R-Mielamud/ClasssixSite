@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "theme_select",
     "information",
     "errors",
+    "wikipedia",
     "rest_framework"
 ]
 

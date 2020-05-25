@@ -28,7 +28,8 @@ urlpatterns = [
     path("", include("subscribe.urls")),
     path("", include("theme_select.urls")),
     path("", include("information.urls")),
-    path("", include("errors.urls"))
+    path("", include("errors.urls")),
+    path("", include("wikipedia.urls"))
 ]
 
 if settings.DEBUG:
