@@ -110,7 +110,7 @@
                 let color = "{{ rating.rating1.color }}";
                 let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
 
-                if (value != 0) {
+                if (+value !== 0) {
                     gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
                 } else {
                     gap.innerHTML = ``;
@@ -122,8 +122,8 @@
                 let color = "{{ rating.rating2.color }}";
                 let canPutSlash = "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
 
-                if (value != 0) {
-                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                if (+value !== 0) {
+                    gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
                 } else {
                     gap.innerHTML = ``;
                 }
@@ -134,8 +134,8 @@
                 let color = "{{ rating.rating3.color }}";
                 let canPutSlash = "{{ rating.rating4 }}" !== "None";
                 
-                if (value != 0) {
-                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                if (+value !== 0) {
+                    gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
                 } else {
                     gap.innerHTML = ``;
                 }
@@ -145,8 +145,8 @@
                 let value = "{{ rating.rating4.value }}";
                 let color = "{{ rating.rating4.color }}";
                 
-                if (value != 0) {
-                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}</span>`;
+                if (+value !== 0) {
+                    gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}</span>`;
                 } else {
                     gap.innerHTML = ``;
                 }

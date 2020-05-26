@@ -57,9 +57,11 @@
                                                     <input class="set-rating-mini-form-rating-input"
                                                         id="set-rating-mini-form-rating-input-{{ i }}-{{ student.index }}-for-date-{{ d }}"
                                                         name="rating-input-{{ i }}-{{ student.index }}-date-{{ d }}"
-                                                        onchange="this.value = Math.floor(this.value);
-                                                                  this.value = Math.max(this.value, 0);
-                                                                  this.value = Math.min(this.value, 12);">
+                                                        onchange="if (this.value !== '') {
+                                                                    this.value = Math.floor(this.value);
+                                                                    this.value = Math.max(this.value, 0);
+                                                                    this.value = Math.min(this.value, 12);
+                                                                }">
                                                 {% endfor %}
                                             </div>
                                 
@@ -225,7 +227,7 @@
                 let canPutSlash = "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
                 
                 if (value != 0) {
-                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                    gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
                 } else {
                     gap.innerHTML = ``;
                 }
@@ -239,7 +241,7 @@
                 let canPutSlash = "{{ rating.rating4 }}" !== "None";
                 
                 if (value != 0) {
-                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                    gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
                 } else {
                     gap.innerHTML = ``;
                 }
@@ -252,7 +254,7 @@
                 let gap = document.getElementById(gapId);
                
                 if (value != 0) {
-                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                    gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
                 } else {
                     gap.innerHTML = ``;
                 }

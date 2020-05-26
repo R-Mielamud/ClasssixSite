@@ -107,11 +107,29 @@ def calculate_middle_ratings():
     students = User.objects.filter(is_teacher=False)
 
     for student in students:
-        rating_sum = 0
-        ratings_count = 0
         rating_sets = student.ratings.all()
+        rating_sets_dict = {}
+        rating_sets_list = []
 
         for rating_set in rating_sets:
+            if rating_sets_dict.get("{}-{}".format(rating_set.month, rating_set.day)):
+                rating_sets_dict["{}-{}".format(rating_set.month, rating_set.day)].append(rating_set)
+            else:
+                rating_sets_dict["{}-{}".format(rating_set.month, rating_set.day)] = [rating_set]
+
+        for date in rating_sets_dict:
+            rating_set = rating_sets_dict[date][len(rating_sets_dict[date]) - 1]
+
+            if ((rating_set.rating1.value != 0 if rating_set.rating1 else True)
+                and (rating_set.rating2.value != 0 if rating_set.rating2 else True)
+                and (rating_set.rating3.value != 0 if rating_set.rating3 else True)
+                and (rating_set.rating4.value != 0 if rating_set.rating4 else True)):
+                    rating_sets_list.append(rating_set)
+
+        rating_sum = 0
+        ratings_count = 0
+
+        for rating_set in rating_sets_list:
             if rating_set.rating1:
                 rating_sum += rating_set.rating1.value
                 ratings_count += 1
