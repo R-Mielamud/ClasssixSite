@@ -209,7 +209,12 @@
                 let gapId = "gap-" + date + "-" + student;
                 let gap = document.getElementById(gapId);
                 let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
-                gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+
+                if (value != 0) {
+                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                } else {
+                    gap.innerHTML = ``;
+                }
             }
             
             if ("{{ rating.rating2 }}" !== "None") {
@@ -218,7 +223,12 @@
                 let gapId = "gap-" + date + "-" + student;
                 let gap = document.getElementById(gapId);
                 let canPutSlash = "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
-                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                
+                if (value != 0) {
+                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                } else {
+                    gap.innerHTML = ``;
+                }
             }
             
             if ("{{ rating.rating3 }}" !== "None") {
@@ -227,7 +237,12 @@
                 let gapId = "gap-" + date + "-" + student;
                 let gap = document.getElementById(gapId);
                 let canPutSlash = "{{ rating.rating4 }}" !== "None";
-                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                
+                if (value != 0) {
+                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                } else {
+                    gap.innerHTML = ``;
+                }
             } 
             
             if ("{{ rating.rating4 }}" !== "None") {
@@ -235,7 +250,12 @@
                 let color = "{{ rating.rating4.color }}";
                 let gapId = "gap-" + date + "-" + student;
                 let gap = document.getElementById(gapId);
-                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}</span>`;
+               
+                if (value != 0) {
+                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                } else {
+                    gap.innerHTML = ``;
+                }
             }
         </script>
     {% endfor %}

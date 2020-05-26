@@ -110,7 +110,7 @@
                 let color = "{{ rating.rating1.color }}";
                 let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
 
-                if (value !== 0) {
+                if (value != 0) {
                     gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
                 } else {
                     gap.innerHTML = ``;
