@@ -7,14 +7,23 @@
     border: 15px solid #555A;
     box-shadow: 10px 10px 20px 20px #DDD,
         -10px -10px 20px 20px #DDD;
-}
-
-* {
-    text-align: center;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: linear;
 }
 
 .wiki-h1-header, .wiki-h2-header, .wiki-h3-header {
     margin-top: 20px;
+    text-align: center;
+}
+
+.wikipedia p {
+    margin-bottom: 15px;
+}
+
+.wikipedia img {
+    margin: 0 auto;
+    display: block;
 }
 
 .wiki-h1-header {
@@ -30,6 +39,7 @@
 .wiki-h3-header {
     color: yellowgreen;
     text-shadow: -1px -1px 1px #000;
+    cursor: grab;
 }
 
 #toWikipediaButton {
@@ -38,4 +48,35 @@
 
 #toMainButton {
     background-color: blue;
+}
+
+.rating-statuses-table {
+    background-color: #FFFD;
+    border: 7px solid #999D;
+    padding: 10px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.rating-color-to-status {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.rating-color {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.accordion div {
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: linear;
 }

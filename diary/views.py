@@ -1,6 +1,7 @@
 from diary.models import Subject, Month
 from main.models import User
 from main.views import RegistrationFormView
+from diary import constants
 
 class DiaryView(RegistrationFormView):
     template_name = "diary.html"
@@ -26,4 +27,5 @@ class DiaryView(RegistrationFormView):
         context["middle_rating"] = current_user.middle_rating
         context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
         context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")
+        context["status_to_color"] = constants.STATUS_TYPE_TO_COLOR
         return context

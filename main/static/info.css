@@ -62,3 +62,9 @@
 .info-anchor:visited {
     color: white;
 }
+
+.color-white {
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+}

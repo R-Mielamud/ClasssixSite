@@ -54,18 +54,6 @@
                         <button id="subscribeButton" class="top-menu-button top-menu-element top-menu-subscribe-button" title="Підписатися на новини">Підписатися</button>
                         <button id="unsubscribeButton" class="top-menu-button top-menu-element top-menu-unsubscribe-button" title="Відписатися від розсилки">Відписатися</button>
                     </div>
-
-                    <script async>
-                        document.getElementsByClassName("three-dots-menu")[0].onclick = () => {
-                            if (document.getElementsByClassName("three-dots-vertical")[0].style.display === "none") {
-                                document.getElementsByClassName("three-dots-vertical")[0].style.display = "flex";
-                                document.getElementsByClassName("three-dots-menu")[0].style.backgroundColor = "#00A";
-                            } else {
-                                document.getElementsByClassName("three-dots-vertical")[0].style.display = "none";
-                                document.getElementsByClassName("three-dots-menu")[0].style.backgroundColor = "blue";
-                            }
-                        }
-                    </script>
                 </div>
             </div>
         </header>
@@ -97,6 +85,10 @@
                         <div class="info-anchor-container">
                             <img class="info-anchor-sprite" src="{% static 'rl_logo.jpg' %}">
                             <a href="http://rl.odessa.ua/" class="info-anchor" target="_blank">Сайт Рішельєвського ліцею</a>
+                        </div>
+
+                        <div class="info-anchor-container">
+                            <p class="color-white">&copy; Copyright 2020, Roman Melamud</p>
                         </div>
                     </div>
                 </div>
@@ -154,6 +146,19 @@
             <script src="{% static 'buttons.js' %}" async></script>
             <script src="{% static 'registration_form.js' %}" async></script>
             <script src="{% static 'adaptive_three_dots.js' %}" async></script>
+
+            <script async>
+                document.getElementsByClassName("three-dots-menu")[0].onclick = () => {
+                    if (document.getElementsByClassName("three-dots-vertical")[0].style.display === "flex") {
+                        document.getElementsByClassName("three-dots-vertical")[0].style.display = "none";
+                        document.getElementsByClassName("three-dots-menu")[0].style.backgroundColor = "blue";
+                    } else {
+                        document.getElementsByClassName("three-dots-vertical")[0].style.display = "flex";
+                        document.getElementsByClassName("three-dots-menu")[0].style.backgroundColor = "#00A";
+                    }
+                }
+            </script>
+
             {% block additional_scripts %}{% endblock %}
         </footer>
     </body>

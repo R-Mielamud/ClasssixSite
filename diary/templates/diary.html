@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load times %}
+{% load get_by_key %}
 
 {% block additional_sheets %}
     <link rel="stylesheet" href="{% static 'diary.css' %}">
@@ -85,6 +86,15 @@
         {% elif middle_rating < 5 %}
             <h2 class="student-middle-rating" style="color: rgb(255, 0, 0);">Середня оцінка по всім предметам: {{ middle_rating }}</h2>
         {% endif %}
+
+        <div class="rating-statuses-table">
+            {% for status in status_to_color %}
+                <div class="rating-color-to-status">
+                    <div class="rating-color" style="background-color: {{ status_to_color|get_by_key:status }};"></div>
+                    <div>- {{ status }}</div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     {% for rating in ratings %}
@@ -99,27 +109,47 @@
                 let value = "{{ rating.rating1.value }}";
                 let color = "{{ rating.rating1.color }}";
                 let canPutSlash = "{{ rating.rating2 }}" !== "None" || "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
-                gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+
+                if (value !== 0) {
+                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                } else {
+                    gap.innerHTML = ``;
+                }
             }
             
             if ("{{ rating.rating2 }}" !== "None") {
                 let value = "{{ rating.rating2.value }}";
                 let color = "{{ rating.rating2.color }}";
                 let canPutSlash = "{{ rating.rating3 }}" !== "None" || "{{ rating.rating4 }}" !== "None";
-                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+
+                if (value != 0) {
+                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                } else {
+                    gap.innerHTML = ``;
+                }
             }
             
             if ("{{ rating.rating3 }}" !== "None") {
                 let value = "{{ rating.rating3.value }}";
                 let color = "{{ rating.rating3.color }}";
                 let canPutSlash = "{{ rating.rating4 }}" !== "None";
-                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                
+                if (value != 0) {
+                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}${canPutSlash ? "/" : ""}</span>`;
+                } else {
+                    gap.innerHTML = ``;
+                }
             } 
             
             if ("{{ rating.rating4 }}" !== "None") {
                 let value = "{{ rating.rating4.value }}";
                 let color = "{{ rating.rating4.color }}";
-                gap.innerHTML += `<span style='color: ${color}; display: block;'>${value}</span>`;
+                
+                if (value != 0) {
+                    gap.innerHTML = `<span style='color: ${color}; display: block;'>${value}</span>`;
+                } else {
+                    gap.innerHTML = ``;
+                }
             }
         </script>
     {% endfor %}

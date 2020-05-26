@@ -39,3 +39,16 @@ body {
     top: 0;
     left: 0;
 }
+
+input[type="button"], input[type="submit"], button, .top-menu-button, .three-dots-menu, input[type="reset"], .add-article-form-input-alter-button, .wiki-h3-header {
+    cursor: grab;
+    box-shadow: 0 2px 1px #000D;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, button:hover, .top-menu-button:hover, .three-dots-menu:hover, input[type="reset"]:hover, .add-article-form-input-alter-button:hover, .wiki-h3-header:hover {
+    box-shadow: 0 4px 5px #000D;
+}
+
+input[type="button"]:active, input[type="submit"]:active, button:active, .top-menu-button:active, .three-dots-menu:active, input[type="reset"]:active, .add-article-form-input-alter-button:active, .wiki-h3-header:active {
+    box-shadow: 0 0 1px #000D;
+}

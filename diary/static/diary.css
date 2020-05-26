@@ -104,3 +104,28 @@
     text-shadow: 1px 1px 1px black,
         -2px -2px 1px black;
 }
+
+.rating-statuses-table {
+    background-color: #FFFD;
+    border: 7px solid #999D;
+    padding: 10px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    display: flex;
+}
+
+.rating-color-to-status {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.rating-color {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}

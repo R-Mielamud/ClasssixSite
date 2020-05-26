@@ -3,6 +3,7 @@
 {% load concat %}
 {% load static %}
 {% load cache %}
+{% load get_by_key %}
 
 {% block additional_sheets %}
     <link rel="stylesheet" href="{% static 'editratings-form.css' %}">
@@ -57,7 +58,7 @@
                                                         id="set-rating-mini-form-rating-input-{{ i }}-{{ student.index }}-for-date-{{ d }}"
                                                         name="rating-input-{{ i }}-{{ student.index }}-date-{{ d }}"
                                                         onchange="this.value = Math.floor(this.value);
-                                                                  this.value = Math.max(this.value, 1);
+                                                                  this.value = Math.max(this.value, 0);
                                                                   this.value = Math.min(this.value, 12);">
                                                 {% endfor %}
                                             </div>
@@ -186,6 +187,15 @@
                 {% endfor %}
             </div>
         </div>
+    </div>
+
+    <div class="rating-statuses-table">
+        {% for status in status_to_color %}
+            <div class="rating-color-to-status">
+                <div class="rating-color" style="background-color: {{ status_to_color|get_by_key:status }};"></div>
+                <div>- {{ status }}</div>
+            </div>
+        {% endfor %}
     </div>
 
     {% for rating in ratings %}

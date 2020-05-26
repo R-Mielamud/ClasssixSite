@@ -5,6 +5,8 @@ from diary import constants
 from ClasssixSite.celery import work_with_POST
 import datetime
 from django.shortcuts import redirect
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 class EditratingsView(RegistrationFormView):
     success_url = "/editratings/"
@@ -37,6 +39,7 @@ class EditratingsView(RegistrationFormView):
             context["rating_statuses"] = [status[0] for status in constants.RATING_TYPES]
             context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
             context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")
+            context["status_to_color"] = constants.STATUS_TYPE_TO_COLOR
 
         context["canRedirect"] = "n" if registered and user.is_teacher else "y"
 
@@ -81,6 +84,11 @@ class EditratingsView(RegistrationFormView):
 
                 request.session["month_name"] = month
                 request.session["subject"] = request.POST.get("subject_name_input")
+
+                students_sidebar = make_template_fragment_key("editratings_students_sidebar")
+                table = make_template_fragment_key("editratings_table_body")
+                cache.delete(students_sidebar)
+                cache.delete(table)
             elif request.POST.get("save_ratings"):
                 inputs = {key: request.POST[key] for key in request.POST if key[7:12:1] == "input"}
                 self._work_with_POST(inputs, request.session.get("showing_dates"), request.session.get("subject"), user.is_test)
