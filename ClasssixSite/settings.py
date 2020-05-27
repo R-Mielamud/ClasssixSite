@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     "information",
     "errors",
     "wikipedia",
-    "diary_pdf",
     "rest_framework"
 ]
 
