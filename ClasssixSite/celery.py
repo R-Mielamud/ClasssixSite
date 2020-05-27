@@ -31,7 +31,7 @@ def send_emails(data):
             data["message"],
             data["from"],
             emails,
-            fail_silently=(not proj_settings.DEBUG)
+            fail_silently=proj_settings.DEBUG
         )
 
 @task
