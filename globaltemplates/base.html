@@ -68,6 +68,12 @@
                 </form>
             </div>
 
+            {% if user_obj %}
+                <div class="authorized-as">
+                    Ви авторизовані як <b>{{ user_obj.real_full_name }}</b>
+                </div>
+            {% endif %}
+
             {% block main_content %}{% endblock %}
         </main>
 

@@ -7,6 +7,7 @@ def buttons(request):
         "canShowToDiaryButton": "n",
         "canShowEditRatingsButton": "n",
         "canShowUnsubscribeButton": "n",
+        "user_obj": User.objects.filter(username=registered).first(),
         "theme": request.session.get("theme") or "Light"
     }
     
