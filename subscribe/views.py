@@ -59,12 +59,15 @@ class SubscribeView(RegistrationFormView):
 
         return redirect("/")
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["can_show_warning"] = self.request.session.get("is_invalid_email")
+    def get(self, request, *args, **kwargs):
         username = self.request.session.get("registered")
 
         if not username:
-            context["canRedirect"] = "y"
+            return redirect("/")
+            
+        return super().get(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["can_show_warning"] = self.request.session.get("is_invalid_email")
         return context

@@ -29,7 +29,8 @@ urlpatterns = [
     path("", include("theme_select.urls")),
     path("", include("information.urls")),
     path("", include("errors.urls")),
-    path("", include("wikipedia.urls"))
+    path("", include("wikipedia.urls")),
+    path("", include("diary_pdf.urls"))
 ]
 
 if settings.DEBUG:

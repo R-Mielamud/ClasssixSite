@@ -7,10 +7,21 @@ import datetime
 from django.shortcuts import redirect
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
+from django.shortcuts import redirect
 
 class EditratingsView(RegistrationFormView):
     success_url = "/editratings/"
     template_name = "editratings.html"
+
+    def get(self, request, *args, **kwargs):
+        registered = self.request.session.get("registered")
+
+        user = User.objects.filter(username=registered).first()
+
+        if not (registered and user.is_teacher):
+            return redirect("/")
+        
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -40,8 +51,6 @@ class EditratingsView(RegistrationFormView):
             context["first_semester_months"] = Month.objects.filter(semester=1).order_by("number_in_semester")
             context["second_semester_months"] = Month.objects.filter(semester=2).order_by("number_in_semester")
             context["status_to_color"] = constants.STATUS_TYPE_TO_COLOR
-
-        context["canRedirect"] = "n" if registered and user.is_teacher else "y"
 
         if o_show_ratings_by:
             context["ratings"] = RatingSet.objects.filter(subject=o_show_ratings_by)

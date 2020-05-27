@@ -14,6 +14,9 @@ class DeleteArticleView(View):
             pk = request.GET.get("pk")
             article = Article.objects.filter(pk=pk).first()
 
+            if article.author.username != self.request.session.get("registered"):
+                return redirect("/")
+
             if article:
                 article.delete()
 
@@ -29,6 +32,14 @@ class EditArticleView(RegistrationFormView):
         if not pk or not pk.isdigit() or not Article.objects.filter(pk=int(pk)).first():
             return redirect("/add_article/")
 
+        article = Article.objects.get(pk=pk)
+
+        if not self.request.session.get("registered"):
+            return redirect("/")
+
+        if article.author.username != self.request.session.get("registered"):
+            return redirect("/")
+
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -36,10 +47,6 @@ class EditArticleView(RegistrationFormView):
         article = Article.objects.get(pk=int(self.request.GET.get("pk")))
         context["header"] = article.header
         context["text"] = article.text
-
-        if not self.request.session.get("registered"):
-            context["canRedirect"] = "y"
-
         return context
 
     def post(self, request, *args, **kwargs):
@@ -96,10 +103,8 @@ class AddArticleView(RegistrationFormView):
 
         return redirect("/")
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-
+    def get(self, request):
         if not self.request.session.get("registered"):
-            context["canRedirect"] = "y"
-        
-        return context 
+            return redirect("/")
+
+        return super().get(request)
