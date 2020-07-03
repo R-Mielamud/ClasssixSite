@@ -25,7 +25,7 @@ def send_emails(data):
 
     emails = User.objects.filter(is_subscriber=True).values_list("email", flat=True)
 
-    if proj_settings.DEBUG:
+    if not proj_settings.DEBUG:
         if data["is_string"]:
             mail.send_mail(
                 data["subject"],
@@ -37,7 +37,7 @@ def send_emails(data):
         else:
             mail.send_mail(
                 subject=data["subject"],
-                message="adc",
+                message="",
                 from_email=data["from"],
                 html_message=data["message"],
                 recipient_list=emails,
