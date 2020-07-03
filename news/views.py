@@ -96,7 +96,7 @@ class AddArticleView(RegistrationFormView):
 
             email_data = {
                 "subject": "Новина!",
-                "message": render_to_string("news_article_email.html", {
+                "message": render_to_string("new_article_email.html", {
                     "article_header": header
                 }),
                 "from": "Наш 6 клас <noreply@rl-classfive.com.ua>"
