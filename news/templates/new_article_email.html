@@ -25,7 +25,7 @@
                 color: green;
             }
 
-            body {
+            .main {
                 background-color: #0F05;
                 display: flex;
                 justify-content: center;
@@ -36,9 +36,11 @@
     </head>
 
     <body>
-        <h1 class="header">Новина!</h1>
-        <h2 class="subheader">{{ article_header }}</h2>
-        <p>Хтось написав новину на сайті класу!</p>
-        <h4>Переходь <a href="https://rl-classfive.com.ua">сюди</a>!</h4>
+        <div class="main">
+            <h1 class="header">Новина!</h1>
+            <h2 class="subheader">{{ article_header }}</h2>
+            <p>Хтось написав новину на сайті класу!</p>
+            <h4>Переходь <a href="https://rl-classfive.com.ua">сюди</a>!</h4>
+        </div>
     </body>
 </html>
