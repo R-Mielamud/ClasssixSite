@@ -1,26 +1,37 @@
-<style>
-    .logo {
-        border-radius: 50%;
-        width: 300px;
-        height: 300px;
-    }
-    
-    .header {
-        color: goldenrod;
-    }
-    
-    .subheader {
-        color: greenyellow;
-    }
-    
-    a {
-        text-decoration: none;
-        color: green;
-    }
-</style>
+<!DOCTYPE html>
 
-<img src="https://rl-classfive.com.ua{% static 'logo_top_menu.png' %}" class="logo">
-<h1 class="header">Новина!</h1>
-<h2 class="subheader">{{ article_header }}</h2>
-<p>Хтось написав новину на сайті класу!</p>
-<h4>Переходь <a href="https://rl-classfive.com.ua">сюди</a>!</h4>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            .logo {
+                border-radius: 50%;
+                width: 300px;
+                height: 300px;
+            }
+            
+            .header {
+                color: goldenrod;
+            }
+            
+            .subheader {
+                color: greenyellow;
+            }
+            
+            a {
+                text-decoration: none;
+                color: green;
+            }
+        </style>
+    </head>
+
+    <body>
+        <img src="https://rl-classfive.com.ua{% static 'logo_top_menu.png' %}" class="logo">
+        <h1 class="header">Новина!</h1>
+        <h2 class="subheader">{{ article_header }}</h2>
+        <p>Хтось написав новину на сайті класу!</p>
+        <h4>Переходь <a href="https://rl-classfive.com.ua">сюди</a>!</h4>
+    </body>
+</html>
