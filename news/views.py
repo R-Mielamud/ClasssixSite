@@ -99,7 +99,8 @@ class AddArticleView(RegistrationFormView):
                 "message": render_to_string("new_article_email.html", {
                     "article_header": header
                 }),
-                "from": "Наш 6 клас <noreply@rl-classfive.com.ua>"
+                "from": "Наш 6 клас <noreply@rl-classfive.com.ua>",
+                "is_string": False
             }
 
             self._send_emails(email_data)
