@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'new-article-email.css' %}">
+    </head>
+
+    <body>
+        <img src="{% static 'logo_top_menu.png' %}" class="logo">
+        <h1 class="header">Новина!</h1>
+        <h2 class="subheader">{{ article_header }}</h2>
+        <p>Хтось написав новину на сайті класу!</p>
+        <h4>Переходь <a href="https://rl-classfive.com.ua">сюди</a>!</h4>
+    </body>
+</html>

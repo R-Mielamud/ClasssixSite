@@ -4,6 +4,7 @@ from news.models import Article
 from main.models import User
 from django.shortcuts import redirect
 from ClasssixSite.celery import send_emails
+from django.template.loader import render_to_string
 
 class DeleteArticleView(View):
     def get(self, request, *args, **kwargs):
@@ -95,8 +96,10 @@ class AddArticleView(RegistrationFormView):
 
             email_data = {
                 "subject": "Новина!",
-                "message": "Хтось написав новину! Переходь сюди: http://rl-classfive.com.ua",
-                "from": "admin@rl-classfive.com.ua"
+                "message": render_to_string("news_article_email.html", {
+                    "article_header": header
+                }),
+                "from": "Наш 6 клас <noreply@rl-classfive.com.ua>"
             }
 
             self._send_emails(email_data)

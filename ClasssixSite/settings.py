@@ -25,7 +25,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 20000
 SECRET_KEY = 'i(!_rpn2!0du5p=dap$rq&www^o!l$rk_#4*ppbwff4o4cf2&w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DJ_DEBUG")) if os.environ.get("DJ_DEBUG") else True
+DEBUG = (False if os.environ.get("DJ_DEBUG") == "False" else True) if os.environ.get("DJ_DEBUG") else True
 
 ALLOWED_HOSTS = ["185.233.118.78", "rl-classfive.com.ua", "www.rl-classfive.com.ua", "127.0.0.1", "192.168.0.102"]
 
@@ -192,4 +192,4 @@ EMAIL_HOST_PASSWORD = ""
 
 EMAIL_USE_TLS = False
 
-DEFAULT_FROM_EMAIL = "admin@rl-classfive.com.ua"
+DEFAULT_FROM_EMAIL = "Наш 6 клас <noreply@rl-classfive.com.ua>"

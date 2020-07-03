@@ -1,0 +1,18 @@
+.logo {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+
+.header {
+    color: goldenrod;
+}
+
+.subheader {
+    color: greenyellow;
+}
+
+a {
+    text-decoration: none;
+    color: green;
+}
