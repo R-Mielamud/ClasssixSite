@@ -37,7 +37,7 @@ def send_emails(data):
         else:
             mail.send_mail(
                 subject=data["subject"],
-                message="",
+                message="adc",
                 from_email=data["from"],
                 html_message=data["message"],
                 recipient_list=emails,
