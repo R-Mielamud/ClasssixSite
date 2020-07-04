@@ -24,6 +24,10 @@
 
 .add-article-form-file-container {
     display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .add-article-form-input-alter-button {
