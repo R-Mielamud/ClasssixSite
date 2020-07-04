@@ -1,7 +1,6 @@
 from django.conf.urls import url
-from main.views import RegistrationAndMainView, StopSpamView
+from main.views import RegistrationAndMainView
 
 urlpatterns = [
-    url(r"^$", RegistrationAndMainView.as_view()),
-    url(r"^stop_spam/$", StopSpamView.as_view())
+    url(r"^$", RegistrationAndMainView.as_view())
 ]
