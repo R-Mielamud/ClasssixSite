@@ -1,5 +1,5 @@
 from main.forms import RegistrationForm
-from django.views.generic import FormView, base
+from django.views.generic import FormView
 from main.models import User
 from news.models import Article
 from django.core.cache import cache
@@ -40,6 +40,3 @@ class RegistrationAndMainView(RegistrationFormView):
             context["registered"] = None
 
         return context
-
-class StopSpamView(base.TemplateView):
-    template_name = "stop_spam.html"
